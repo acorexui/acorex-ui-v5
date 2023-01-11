@@ -1,0 +1,67 @@
+<div *ngFor="let r of ranges" [style.border-color]="r.color" class="range-item" (click)="handleEditClick(r)">
+    <div>
+        <div [style.background-color]="r.color"></div>
+        <div>{{r.title}}</div>
+    </div>
+    <div>
+        <div class="min" title="minimum {{r.minValue}}">{{r.minValue}}</div>
+        <div>
+            <i class="far fa-long-arrow-left"></i>
+        </div>
+        <div class="max" title="maxmimum {{r.maxValue}}">{{r.maxValue}}</div>
+        <div class="remove-button" (click)="handleRemoveClick(r)"><i class="far fa-trash-alt"></i></div>
+    </div>
+</div>
+<ax-button icon="far fa-plus" type="success outline" (click)="handleAddClick()">{{ 'common.add-item' | trans  }}
+</ax-button>
+<ng-template #tplEdit>
+    <ax-page>
+        <ax-page-content>
+            <div class="container">
+                <ax-validation-form (onInit)="onFormInit($event)">
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'common.title' | trans  }}</ax-label>
+                            <ax-text-box [(value)]="editRow.title">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-text-box>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <ax-label>{{ 'common.min-value' | trans  }}</ax-label>
+                            <ax-number-box [(value)]="editRow.minValue" [showSeparator]="showSeparator"
+                                [decimalNumber]="decimalNumber">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-number-box>
+                        </div>
+                        <div class="col-6">
+                            <ax-label>{{ 'common.max-value' | trans  }}</ax-label>
+                            <ax-number-box [(value)]="editRow.maxValue" [showSeparator]="showSeparator"
+                                [decimalNumber]="decimalNumber">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-number-box>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'common.color' | trans  }}</ax-label>
+                            <ax-color-picker [(value)]="editRow.color">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-color-picker>
+                        </div>
+                    </div>
+                </ax-validation-form>
+            </div>
+            <div class="ax-mrg-md"></div>
+        </ax-page-content>
+    </ax-page>
+</ng-template>

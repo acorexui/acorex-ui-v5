@@ -1,0 +1,110 @@
+<ax-page>
+  <ax-page-content>
+    <div class="container">
+      <br>
+
+      <div class="row">
+        <ax-button type="primary" size="sm" [loading]="loading" (click)="handleLoginClick()">Normal Button</ax-button>
+        <ax-button type="secondary" size="sm">Normal Button</ax-button>
+        <ax-button type="success" size="sm">Normal Button</ax-button>
+        <ax-button type="warning" size="sm">Normal Button</ax-button>
+        <ax-button type="danger" size="sm">Normal Button</ax-button>
+        <ax-button type="info" size="sm">Normal Button</ax-button>
+        <ax-button type="light" size="sm">Normal Button</ax-button>
+        <ax-button type="dark" size="sm">Normal Button</ax-button>
+        <ax-button type="dark" size="sm" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <div class="row">
+        <ax-button type="primary" size="md" [loading]="loading" (click)="handleLoginClick()">Normal Button</ax-button>
+        <ax-button type="secondary" size="md">Normal Button</ax-button>
+        <ax-button type="success" size="md">Normal Button</ax-button>
+        <ax-button type="warning" size="md">Normal Button</ax-button>
+        <ax-button type="danger" size="md">Normal Button</ax-button>
+        <ax-button type="info" size="md">Normal Button</ax-button>
+        <ax-button type="light" size="md">Normal Button</ax-button>
+        <ax-button type="dark" size="md">Normal Button</ax-button>
+        <ax-button type="dark" size="md" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <div class="row">
+        <ax-button type="primary" size="lg" [loading]="loading" (click)="handleLoginClick()">Normal Button</ax-button>
+        <ax-button type="secondary" size="lg">Normal Button</ax-button>
+        <ax-button type="success" size="lg">Normal Button</ax-button>
+        <ax-button type="warning" size="lg">Normal Button</ax-button>
+        <ax-button type="danger" size="lg">Normal Button</ax-button>
+        <ax-button type="info" size="lg">Normal Button</ax-button>
+        <ax-button type="light" size="lg">Normal Button</ax-button>
+        <ax-button type="dark" size="lg">Normal Button</ax-button>
+        <ax-button type="dark" size="lg" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <br>
+      <div class="row">
+        <ax-button type="primary twotone" size="md">Normal Button</ax-button>
+        <ax-button type="secondary twotone" size="md">Normal Button</ax-button>
+        <ax-button type="info twotone" size="md">Normal Button</ax-button>
+        <ax-button type="success twotone" size="md">Normal Button</ax-button>
+        <ax-button type="warning twotone" size="md">Normal Button</ax-button>
+        <ax-button type="danger twotone" size="md">Normal Button</ax-button>
+        <ax-button type="light twotone" size="md">Normal Button</ax-button>
+        <ax-button type="dark twotone" size="md">Normal Button</ax-button>
+        <ax-button type="dark twotone" size="md" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <br>
+
+      <div class="row">
+        <ax-button type="primary outline" size="md">Normal Button</ax-button>
+        <ax-button type="secondary outline" size="md">Normal Button</ax-button>
+        <ax-button type="info outline" size="md">Normal Button</ax-button>
+        <ax-button type="success outline" size="md">Normal Button</ax-button>
+        <ax-button type="warning outline" size="md">Normal Button</ax-button>
+        <ax-button type="danger outline" size="md">Normal Button</ax-button>
+        <ax-button type="light outline" size="md">Normal Button</ax-button>
+        <ax-button type="dark outline" size="md">Normal Button</ax-button>
+        <ax-button type="dark outline" size="md" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <br>
+
+      <div class="row">
+        <ax-button type="primary blank" size="md">Normal Button</ax-button>
+        <ax-button type="secondary blank" size="md">Normal Button</ax-button>
+        <ax-button type="info blank" size="md">Normal Button</ax-button>
+        <ax-button type="success blank" size="md">Normal Button</ax-button>
+        <ax-button type="warning blank" size="md">Normal Button</ax-button>
+        <ax-button type="danger blank" size="md">Normal Button</ax-button>
+        <ax-button type="light blank" size="md">Normal Button</ax-button>
+        <ax-button type="dark blank" size="md">Normal Button</ax-button>
+        <ax-button type="dark blank" size="md" [disabled]="true">Normal Button</ax-button>
+      </div>
+      <div class="row">
+        <ax-button type="primary" size="md" [selected]="true">Selected Button</ax-button>
+        <ax-button type="primary twotone" size="md" [selected]="true">Selected Button</ax-button>
+        <ax-button type="primary outline" size="md" [selected]="true">Selected Button</ax-button>
+        <ax-button type="primary blank" size="md" [selected]="true">Selected Button</ax-button>
+
+      </div>
+      <div class="row">
+        <ax-button type="dark" size="md" icon="fas fa-rocket" size="sm"></ax-button>
+        <ax-button type="dark" size="md" icon="fas fa-rocket"></ax-button>
+        <ax-button type="dark" size="md" icon="fas fa-rocket" size="lg"></ax-button>
+        <ax-button type="dark" size="md" icon="fas fa-rocket" [loading]="true"></ax-button>
+      </div>
+      <div class="row">
+        <ax-form-group>
+          <ax-button type="primary" size="md">Selected Button</ax-button>
+          <ax-button type="primary" size="md" [selected]="true">Selected Button</ax-button>
+        </ax-form-group>
+      </div>
+    </div>
+    <ax-selection-list direction="vertical" mode="single" [items]="items" [selectedItems]="selectedValues"
+      (selectedValuesChange)="handleSelectedValuesChange($event)" valueField='id' textField='text' [readonly]="true">
+    </ax-selection-list>
+
+    <ax-selection-list direction="vertical" [mode]="'multiple'" [items]="items" [selectedItems]="selectedValues"
+      (selectionChanged)="handleSelectedChange($event)" valueField='id' textField='text' [readonly]="false">
+    </ax-selection-list>
+
+    <ax-check-box label="Disabled" [(value)]="value" size="md" [disabled]="true"
+      (onValueChanged)="handleValueChangeEvent($event)" (valueChange)="valueChange($event)" (onClick)="onClick($event)">
+    </ax-check-box>
+
+  </ax-page-content>
+</ax-page>

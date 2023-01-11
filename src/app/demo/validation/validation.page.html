@@ -1,0 +1,112 @@
+<div class="container">
+    <ax-validation-form #form>
+        <div class="row">
+            <div class="col-6">
+                <!-- <ax-form-group>
+                    <ax-label>Validation</ax-label>
+                    <ax-text-box>
+
+                    </ax-text-box>
+                </ax-form-group> -->
+            </div>
+        </div>
+        <!-- <ax-form-group>
+            <ax-label>Validation</ax-label>
+            <ax-text-box [disabled]="true" [(value)]="textBoxValue">
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                    <ax-validation-rule type="email"></ax-validation-rule>
+                    <ax-validation-rule type="custom" message="هی!" [value]="customValidation"></ax-validation-rule>
+                </ax-validation>
+            </ax-text-box>
+        </ax-form-group> -->
+        <!-- <ax-form-group>
+            <ax-label>DatePicker</ax-label>
+            <ax-date-picker [disabled]="true" allowClear="true">
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-date-picker>
+        </ax-form-group>
+        <ax-form-group>
+            <ax-label>lov</ax-label>
+            <ax-lov [disabled]="true" #lov1 (onSelectionChange)="onSelectionChange($event)" selectionMode="multiple" [textField]="'jobTitle'" [valueField]="'id'">
+                <ax-data-source [provideData]="provideData">
+                </ax-data-source>
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-lov>
+        </ax-form-group>
+        <ax-form-group>
+            <ax-label>password</ax-label>
+            <ax-password-box [disabled]="true">
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-password-box>
+        </ax-form-group> -->
+        <!-- <ax-form-group>
+            <ax-label>select box</ax-label>
+            <ax-select-box [disabled]="true" [textField]="'Name'" [valueField]="'ID'" [mode]="'multiple'" [remoteOperation]="true">
+                <ax-data-source [provideData]="provideData">
+                </ax-data-source>
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-select-box>
+        </ax-form-group> -->
+        <!-- <ax-form-group>
+            <ax-label>NumberBox</ax-label>
+            <ax-number-box [disabled]="true" (onValueChanged)="onValueChanged($event)" [showSeparator]="true" [allowClear]="true" [(value)]="num" [decimalNumber]="5">
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-number-box>
+        </ax-form-group>
+        <ax-form-group>
+            <ax-label>TimePicker</ax-label>
+            <ax-time-picker [disabled]="true" (onValueChanged)="onValueChanged($event)" timeType="hhmmssam" [allowClear]="true" [showCurentTime]="true">
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-time-picker>
+        </ax-form-group> -->
+        <br />
+        <br />
+        <ax-form-group>
+            <ax-text-box icon="far fa-user" [(value)]="text">
+                <ax-validation>
+                    <ax-validation-rule type="required">
+                    </ax-validation-rule>
+
+                </ax-validation>
+            </ax-text-box>
+        </ax-form-group>
+        <!-- <ax-form-group>
+            <ax-text-box>
+                <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation>
+            </ax-text-box>
+        </ax-form-group> -->
+        <br />
+        <br />
+        <ax-button (click)="submit()">
+            Submit
+        </ax-button>
+        <br>
+        <ax-button (click)="translator.use('en')">
+            English
+        </ax-button>
+        <ax-button (click)="translator.use('fa')">
+            persion
+        </ax-button>
+        <ax-button (click)="translator.use('jp')">
+            Japanies
+        </ax-button>
+        <ax-button (click)="clear()">
+            clear
+        </ax-button>
+    </ax-validation-form>
+</div>

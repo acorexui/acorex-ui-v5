@@ -1,0 +1,43 @@
+<ax-button (click)="onOpenPopupClick()">
+  Open Popup by component
+</ax-button>
+
+<ax-button (click)="onOpenPopupRouteClick()">
+  Open Popup by route
+</ax-button>
+
+<ax-button (click)="onOpenPopupgridClick()">
+  Open Popup grid
+</ax-button>
+
+<ax-button type='success' (click)="onOpenDialogClick()">
+  Open Dialog
+</ax-button>
+
+
+
+<ax-button type='success' (click)="onOpenPopoverClick()">
+  Open Template Popover
+</ax-button>
+
+<br>
+<br>
+<br>
+<br>
+<div style="display: inline-block;width: 500px;">&nbsp;</div><span #span id="span">Here</span>
+
+
+
+<ng-template #tpl>
+  <div style="width: 200px;height: 35px;background-color: burlywood;" class="animate__animated animate__fadeIn">
+    Hi Template
+  </div>
+</ng-template>
+
+
+<ax-popover target="#span" openMode="click" closeMode="clickout"
+  [position]="{originX:'center',originY:'bottom',overlayX:'center',overlayY:'top'}">
+  <div style="width: 300px;height: 50px;background-color: cornflowerblue;">
+    Hi Template 2
+  </div>
+</ax-popover>

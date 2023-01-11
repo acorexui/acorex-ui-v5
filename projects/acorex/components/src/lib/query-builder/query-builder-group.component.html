@@ -1,0 +1,68 @@
+<div class="header">
+    <div class="condition" *ngIf="parent">
+        <div class="text {{parent.condition}}">
+            <span>{{parent.condition }}</span>
+        </div>
+    </div>
+    <div class="handler">
+        <i class="far fa-grip-lines-vertical"></i>
+    </div>
+
+    <div class="detail {{group.condition}}" (click)="changeDetailMode()">
+        <div class="collapsed" *ngIf="collapsed;else expandedTemplate">
+            {{group.queryString}}
+        </div>
+        <ng-template #expandedTemplate>
+            <div class="expanded">
+                <strong>{{group.condition == 'OR' ? 'یکی از' : 'همه' }} <span>شرایط زیر برقرار باشد</span> </strong>
+            </div>
+        </ng-template>
+    </div>
+    <div class="buttons-list">
+        <div class="button remove" *ngIf="parent && mode=='new'" (click)="handleRemoveClick()">
+            <i class="far fa-times ax-danger-color"></i>
+        </div>
+        <div class="button edit" *ngIf="mode=='new'" (click)="handleChangeClick()">
+            <i class="far fa-retweet ax-danger-color"></i>
+        </div>
+    </div>
+</div>
+<div class="rules" *ngIf="!collapsed">
+    <!-- <ax-validation-form #form> -->
+
+    <div *ngFor="let item of group.items" class="group-item">
+        <ng-container *ngIf="item.condition;else ruleTemplate">
+            <ax-query-group (groupRuleChanged)="ruleChanged($event)" [mode]="mode" [group]="item" [fields]="fields"
+                [parent]="group">
+            </ax-query-group>
+        </ng-container>
+        <ng-template #ruleTemplate>
+            <ax-query-rule #queryRule (ruleChanged)="ruleChanged($event)" [mode]="mode"
+                (onRuleDelete)="ruleDelete($event)" [rule]="item" [fields]="fields" [parent]="group">
+            </ax-query-rule>
+        </ng-template>
+    </div>
+    <!-- </ax-validation-form> -->
+    <div class="group-item" *ngIf="mode=='new'">
+        <div class="ax-query-rule">
+            <div class="condition">
+            </div>
+            <div class="handler">
+                <i class="far fa-grip-lines-vertical"></i>
+            </div>
+            <div class="add-rule" (click)="addRule()" *ngIf="mode=='new'">
+                <i class="far fa-plus"></i>&nbsp;&nbsp;<span>شرط</span>
+            </div>
+            <div class="add-group" (click)="addGroup()" *ngIf="!showGroupCondition && mode=='new'">
+                <i class="far fa-plus"></i>&nbsp;&nbsp;<span>گروه</span>
+            </div>
+            <div *ngIf="showGroupCondition && mode=='new'" class="add-condition OR" (click)="addGroupOR()">
+                <i class="far fa-plus"></i>&nbsp;&nbsp;<span>OR</span>
+            </div>
+            <div *ngIf="showGroupCondition && mode=='new'" class="add-condition AND" (click)="addGroupAND()">
+                <i class="far fa-plus"></i>&nbsp;&nbsp;<span>AND</span>
+            </div>
+
+        </div>
+    </div>
+</div>

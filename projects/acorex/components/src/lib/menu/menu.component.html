@@ -1,0 +1,74 @@
+<!-- <div class="ax menu-container {{size}}" #container>
+  <ul class="root" [class.horizontal]="direction=='horizontal'" [class.vertical]="direction=='vertical'" #root>
+    <ng-template #recursiveList let-list>
+      <ng-container *ngFor="let item of list;trackBy:trackByItem">
+        <li class="ax-toolbar-menu-item ax {{item.type || 'ax primary'}} {{item.style || 'ax primary'}}" [class.disabled]='item.disable'  [class.subIcon]='item.items' [class.startIcon]='item.startIcon' [class.startIcon]='item.icon' [class.endIcon]='item.endIcon' *ngIf="item.visible!=false" (click)="handleItemClick($event, item)"
+          [class.selected]="item.selected" [class.divider]="item.divider" [attr.title]="item.tooltip ? item.tooltip : null"
+          [attr.data-uid]="item.uid"
+          [class.split]="item.split">
+          <div class="content-side">
+            <ng-container *ngIf="menuTemplate; else menuBody">
+              <ng-container *ngTemplateOutlet="menuTemplate; context: { $implicit: item }">
+              </ng-container>
+            </ng-container>
+            <ng-template #menuBody>
+              <span class="ax-toolbar-menu-item-text">
+                <i class="{{ item.startIcon }} start-icon ax-menu-item-icon" *ngIf="item.startIcon"></i>
+                <i class="{{ item.icon }} start-icon ax-menu-item-icon" *ngIf="item.icon"></i>
+                <span *ngIf="item.text">{{ item.text }}</span>
+                <i class="{{ item.endIcon }} end-icon ax-menu-item-icon" *ngIf="item.endIcon"></i>
+              </span>
+            </ng-template>
+          </div>
+          <div class="sub-icon-side" *ngIf="item.hasChildren">
+            <i class="far fa-angle-down ax-menu-item-drop-icon"></i>
+          </div>
+          <ul *ngIf="item.hasChildren" class="collapsed sub-menu">
+            <ng-container *ngTemplateOutlet="
+              recursiveList;
+              context: { $implicit: item.items }
+            "></ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveList; context: { $implicit: items }"></ng-container>
+    <li class="more" #moreLI (click)="handleItemClick($event)">
+      <i class="far fa-bars"></i>
+      <ul #moreUL class="collapsed sub-menu"></ul>
+    </li>
+  </ul>
+</div> -->
+
+<nav>
+  <ul class="ax nav-menu" [class.rtl]="rtl" [class.nav-center]="direction=='horizontal'"
+    [class.nav-vertical]="direction=='vertical'">
+    <ng-container *ngTemplateOutlet="recursiveMenu; context:{ $implicit: items }"></ng-container>
+  </ul>
+</nav>
+
+<ng-template #recursiveMenu let-items>
+  <ng-container *ngFor="let item of items">
+    <li class="ax {{item.style}}" [ngClass]="{'disabled': item.disable}"
+      *ngIf="item.visible === undefined || item.visible" (click)="handleItemClick($event,item)" axTooltip
+      [placement]="item.tooltipPlacement ? item.tooltipPlacement : 'bottom'"
+      [tooltip]="item.tooltip ? item.tooltip : ''">
+      <div class="ax-menu-item" >
+        <span class="menu-item-start-side">
+          <i class="{{ item.startIcon }}" *ngIf="item.startIcon"></i>
+          <i class="{{ item.icon }}" *ngIf="item.icon"></i>
+          <span class="ax-menu-item-text" *ngIf="item.text">{{item.text}}</span>
+        </span>
+        <span class="menu-item-end-side">
+          <i class="far fa-angle-down drop-icon" *ngIf="item.items && item.text"></i>
+          <i class="{{ item.endIcon }}" *ngIf="item.endIcon"></i>
+        </span>
+
+      </div>
+      <ul *ngIf="item.items" class="ax-sub-menu">
+        <ng-container *ngTemplateOutlet="recursiveMenu; context:{ $implicit: item.items }">
+        </ng-container>
+      </ul>
+    </li>
+  </ng-container>
+</ng-template>

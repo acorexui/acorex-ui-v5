@@ -1,0 +1,170 @@
+.ax {
+    &.upload-file-box {
+        display: flex;
+        background: var(--ax-white-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5em 0;
+        border-width: 2px;
+        border-style: dashed;
+        border-color: var(--ax-border-dark-color);
+        min-height: 200px;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+            border-color: var(--ax-primary-color);
+            border-style: solid;
+            transition: all 0.3s;
+
+            .upload-content {
+                color: var(--ax-primary-color);
+            }
+
+            .action-container {
+                display: flex !important;
+            }
+        }
+
+        .upload-content {
+            text-align: center;
+            color: var(--ax-border-color);
+
+            i {
+                font-size: 30px;
+            }
+
+            p {
+                padding-top: var(--sp-md-size);
+
+            }
+        }
+
+        .preview {
+            background-position: center !important;
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        .action-container {
+            background: rgba(var(--ax-secondary-color), 0.5);
+            min-height: 195px;
+            display: none;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+    }
+
+    .ax-upload-drop-over {
+        position: relative;
+
+        .overlay {
+            pointer-events: none;
+            z-index: 1;
+            display: none;
+            position: absolute;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: var(--ax-white-color);
+            outline: 2px dashed var(--ax-primary-color);
+            outline-offset: 0;
+            opacity: 0;
+            transition: display 0s, opacity 0.15s linear, outline-offset 0.15s linear;
+
+            &.show {
+                display: flex;
+                opacity: 0.95;
+                outline-offset: calc(-1 * 0.5em);
+            }
+
+            .icon-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+
+                i {
+                    margin-bottom: 10px;
+                    color: var(--ax-primary-color);
+                    -webkit-animation: pulsate-fwd 0.5s ease-in-out infinite both;
+                    animation: pulsate-fwd 0.5s ease-in-out infinite both;
+                }
+
+                span {
+                    color: var(--ax-secondary-light-color);
+                }
+            }
+
+            @-webkit-keyframes pulsate-fwd {
+                0% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                50% {
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+            @keyframes pulsate-fwd {
+                0% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                50% {
+                    -webkit-transform: scale(1.1);
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+
+        }
+    }
+
+    .ax-upload-progress-panel {
+        padding: 0.5em;
+        background-color: var(--ax-white-color);
+
+        small {
+            display: block;
+            margin: 0.5em  0 0 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+  
+}

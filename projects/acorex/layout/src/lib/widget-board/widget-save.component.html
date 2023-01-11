@@ -1,0 +1,43 @@
+<ax-page>
+    <ax-page-content>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ax-form-group>
+                        <ax-label>{{'common.title' | trans}}</ax-label>
+                        <ax-text-box [(value)]="data.title"></ax-text-box>
+                    </ax-form-group>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ax-form-group>
+                        <ax-label>{{'common.description' | trans}}</ax-label>
+                        <ax-text-area [(value)]="data.description"></ax-text-area>
+                    </ax-form-group>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-12">
+                    <ax-form-group>
+                        <ax-label>{{'common.uniquename' | trans}}</ax-label>
+                        <ax-text-box></ax-text-box>
+                    </ax-form-group>
+                </div>
+            </div> -->
+            <div class="row" style="margin-block-end: var(--ax-size-md);margin-block-start: var(--ax-size-md);">
+                <div class="col-12">
+                    <ax-fieldset caption="{{'widget-board.configurable-props' | trans}}">
+                        <div class="row" *ngFor="let prop of displayProps">
+                            <div class="col-12" style="margin-block-end: var(--ax-size-sm)">
+                                <ax-check-box [(value)]="prop.allow" label="{{ prop.title | trans }}">
+
+                                </ax-check-box>
+                            </div>
+                        </div>
+                    </ax-fieldset>
+                </div>
+            </div>
+        </div>
+    </ax-page-content>
+</ax-page>

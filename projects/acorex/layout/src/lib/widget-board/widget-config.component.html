@@ -1,0 +1,16 @@
+<ax-page>
+    <ax-page-content>
+        <div class="container">
+            <ax-validation-form #form>
+                <div class="row" *ngFor="let p of displayProps; trackBy: identify">
+                    <div class="col-12">
+                        <ax-label>{{p.property.title | trans}}</ax-label>
+                        <ng-container ax-property-editor-renderer [property]="p" [context]="context" [host]="widget"  [validationForm]="form"
+                            (onValueChange)="handleValueChange($event)">
+                        </ng-container>
+                    </div>
+                </div>
+            </ax-validation-form>
+        </div>
+    </ax-page-content>
+</ax-page>

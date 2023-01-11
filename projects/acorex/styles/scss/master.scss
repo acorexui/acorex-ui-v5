@@ -1,0 +1,259 @@
+@import "./variables.scss";
+:root {
+    --ax-border-color: #d1d5db;
+    --ax-border-dark-color: rgba(34, 36, 38, 0.3);
+    --ax-size: 8px;
+    --ax-base-size: var(--ax-size);
+    --ax-base-ratio: 6;
+    // Create Sizes
+    @each $name, $size in $sizes {
+        @if type-of($size) == "map" {
+            @each $subname, $variant in $size {
+                @if $name== "" {
+                    --ax-size-#{$name}#{$subname}: #{$variant};
+                } @else {
+                    --ax-size-#{$name}-#{$subname}: #{$variant};
+                }
+            }
+        }
+    }
+    // Create Colors
+    @each $name, $color in $colors {
+        @if type-of($color) == "map" {
+            @each $subname, $variant in $color {
+                @if $subname== "" {
+                    --ax-#{$name}-#{$color-suffix}: #{$variant};
+                } @else {
+                    --ax-#{$name}-#{$subname}-#{$color-suffix}: #{$variant};
+                }
+            }
+        } @else {
+            --ax-#{$name}-#{$color-suffix}: #{$color};
+        }
+    }
+}
+
+@each $name, $color in $colors {
+    @if type-of($color) == "map" {
+        @each $subname, $variant in $color {
+            @if $subname== "" {
+                .ax-text-#{$name} {
+                    color: var(--ax-#{$name}-#{$color-suffix});
+                }
+                .ax-bg-#{$name} {
+                    background: var(--ax-#{$name}-#{$color-suffix});
+                }
+                .ax-border-#{$name} {
+                    border-color: var(--ax-#{$name}-#{$color-suffix});
+                }
+            } @else {
+                .ax-text-#{$name}-#{$subname} {
+                    color: var(--ax-#{$name}-#{$subname}-#{$color-suffix});
+                }
+                .ax-bg-#{$name}-#{$subname} {
+                    background: var(--ax-#{$name}-#{$subname}-#{$color-suffix});
+                }
+                .ax-border-#{$name}-#{$subname} {
+                    background: var(--ax-#{$name}-#{$subname}-#{$color-suffix});
+                }
+            }
+        }
+    }
+}
+
+// Sizes
+.ax {
+    &.form-control {
+        height: calc(var(--ax-base-size) * var(--ax-base-ratio)) !important;
+        padding: 0 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        // &.sm,
+        // &.md,
+        // &.lg {
+        //     &.ax-button-icon {
+        //         width: calc(var(--ax-base-size) * var(--ax-base-ratio)) !important;
+        //         height: calc(var(--ax-base-size) * var(--ax-base-ratio)) !important;
+        //     }
+        // }
+        &.sm {
+            --ax-base-size: calc(var(--ax-size) - 2px);
+            font-size: 0.875rem;
+        }
+        &.md {
+            height: calc(var(--ax-base-size) * var(--ax-base-ratio)) !important;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        &.lg {
+            --ax-base-size: calc(var(--ax-size) + 2px);
+            font-size: 1.5rem;
+        }
+    }
+}
+.ax {
+    &.sm {
+        --ax-base-size: calc(var(--ax-size) - 2px);
+    }
+    &.lg {
+        --ax-base-size: calc(var(--ax-size) + 2px);
+    }
+}
+@each $name, $size in $sizes {
+    @if type-of($size) == "map" {
+        @each $subname, $variant in $size {
+            @if $name== "" {
+                .ax-mrg-#{$subname} {
+                    margin: var(--ax-size-#{$subname}) !important;
+                }
+                .ax-pad-#{$subname} {
+                    padding: var(--ax-size-#{$subname}) !important;
+                }
+            }
+        }
+    }
+}
+
+// Create Classes
+@each $name, $color in $colors {
+    .ax {
+        @if type-of($color) == "map" {
+            @each $subname, $variant in $color {
+                @if $subname== "" {
+                    &.bg-#{$name} {
+                        background-color: var(--ax-#{$name}-#{$color-suffix});
+                    }
+                    &.bg-light-#{$name} {
+                        background-color: var(--ax-#{$name}-light-#{$color-suffix});
+                    }
+                    &.bg-dark-#{$name} {
+                        background-color: var(--ax-#{$name}-dark-#{$color-suffix});
+                    }
+                    &.bg-lighten-#{$name} {
+                        background-color: var(--ax-#{$name}-trans-light-#{$color-suffix});
+                    }
+                    &.text-#{$name} {
+                        color: var(--ax-#{$name}-#{$color-suffix});
+                    }
+                    &.lighten-#{$name} {
+                        color: var(--ax-#{$name}-#{$color-suffix});
+                        background-color: var(--ax-#{$name}-trans-light-#{$color-suffix});
+                    }
+                    &.#{$name} {
+                        background: var(--ax-#{$name}-#{$color-suffix});
+                        color: var(--ax-#{$name}-fore-#{$color-suffix});
+                        &:hover,
+                        &:focus {
+                            background: var(--ax-#{$name}-dark-#{$color-suffix});
+                        }
+                        &:active {
+                            background: var(--ax-#{$name}-light-#{$color-suffix});
+                        }
+                        &.selected {
+                            background: var(--ax-#{$name}-dark-#{$color-suffix});
+                        }
+                        &.disabled {
+                            cursor: not-allowed;
+                            background: var(--ax-gray-light-color) !important;
+                            color: var(--ax-gray-fore-color) !important;
+                            border-color: var(--ax-gray-light-color) !important;
+                        }
+                        &.twotone {
+                            background: var(--ax-#{$name}-trans-light-#{$color-suffix});
+                            border-color: transparent;
+
+                            @if ($name == "light") {
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            } @else {
+                                color: var(--ax-#{$name}-#{$color-suffix});
+                            }
+
+                            &:hover:not(.disabled),
+                            &:focus:not(.disabled) {
+                                background: var(--ax-#{$name}-light-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            }
+                            &:active {
+                                background: var(--ax-#{$name}-dark-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            }
+                            &.selected {
+                                background: var(--ax-#{$name}-dark-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            }
+                        }
+                        &.outline {
+                            background: transparent;
+                            border: 1px solid;
+                            border-color: var(--ax-#{$name}-#{$color-suffix});
+                            @if ($name == "light") {
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            } @else {
+                                color: var(--ax-#{$name}-#{$color-suffix});
+                            }
+
+                            &:hover:not(.disabled),
+                            &:focus:not(.disabled) {
+                                background: var(--ax-#{$name}-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            }
+                            &:active {
+                                background: var(--ax-#{$name}-light-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                                border-color: var(--ax-#{$name}-light-#{$color-suffix});
+                            }
+                            &.selected {
+                                background: var(--ax-#{$name}-dark-#{$color-suffix});
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                                border-color: var(--ax-#{$name}-dark-#{$color-suffix});
+                            }
+                        }
+                        &.blank {
+                            background: transparent;
+                            border-color: transparent;
+
+                            @if ($name == "light") {
+                                color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            } @else {
+                                color: var(--ax-#{$name}-#{$color-suffix});
+                            }
+
+                            &:hover,
+                            &:focus {
+                                @if ($name == "light") {
+                                    background: var(--ax-#{$name}-trans-light-#{$color-suffix});
+                                    color: var(--ax-#{$name}-fore-#{$color-suffix});
+                                } @else {
+                                    background: var(--ax-#{$name}-trans-light-#{$color-suffix});
+                                    color: var(--ax-#{$name}-#{$color-suffix});
+                                }
+                            }
+                            &:active {
+                                @if ($name == "light") {
+                                    background: var(--ax-#{$name}-trans-dark-#{$color-suffix});
+                                    color: var(--ax-#{$name}-fore-#{$color-suffix});
+                                } @else {
+                                    background: var(--ax-#{$name}-trans-dark-#{$color-suffix});
+                                    color: var(--ax-#{$name}-#{$color-suffix});
+                                }
+                            }
+                            &.selected {
+                                @if ($name == "light") {
+                                    background: var(--ax-#{$name}-trans-dark-#{$color-suffix});
+                                    color: var(--ax-#{$name}-fore-#{$color-suffix});
+                                } @else {
+                                    background: var(--ax-#{$name}-trans-dark-#{$color-suffix});
+                                    color: var(--ax-#{$name}-#{$color-suffix});
+                                }
+                            }
+                        }
+                        &.panel {
+                            color: var(--ax-#{$name}-fore-#{$color-suffix});
+                            background-color: var(--ax-#{$name}-#{$color-suffix});
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

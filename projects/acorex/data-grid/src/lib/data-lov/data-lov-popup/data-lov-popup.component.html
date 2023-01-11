@@ -1,0 +1,16 @@
+<div style="height: 70vh; padding: 0.5em;">
+    <div style="height: calc(100%);">
+
+        <ax-data-grid [pagination]="pagination" [rtl]="rtl" [suppressRowClickSelection]="false" [keyField]="keyField"
+            [hasChildField]="hasChildField" [selectRow]="selectedItems" #grid [columns]="columns"
+            [remoteOperation]="true" [selectionMode]="selectionMode" (rowDbClick)="rowDoubleClicked($event)"
+            (rowSelectionChange)="rowSelectionChange($event)" [dataSource]="dataSource">
+            <ax-toolbar>
+                <ax-toolbar-search #searchBox style="width: 100%;"></ax-toolbar-search>
+            </ax-toolbar>
+            <ax-selection-column *ngIf="selectionMode== 'single'? false : true"></ax-selection-column>
+            <!-- <ax-data-source [provideData]="dataSource.provideData">
+            </ax-data-source> -->
+        </ax-data-grid>
+    </div>
+</div>

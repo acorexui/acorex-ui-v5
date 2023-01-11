@@ -1,0 +1,21 @@
+<ng-container *ngIf=" mode == 'multiple'; then checkboxList; else radioButtonList"></ng-container>
+<ng-template #checkboxList>
+    <div class="ax selection-list {{size}}" [ngClass]="direction">
+        <ax-check-box label="{{item[textField]}}" *ngFor="let item of items" [disabled]="item.disable || disabled"
+            [readonly]="item.readonly || readonly" [value]="selectedValues.indexOf(item[valueField])>-1"
+            (onValueChanged)="onCheckValueChange(item[valueField],$event.value)" (onClick)="checkBoxClick($event,item)">
+        </ax-check-box>
+    </div>
+</ng-template>
+<ng-template #radioButtonList>
+    <div class="ax selection-list {{size}}" [ngClass]="direction">
+        <label class="ax radio" for="{{uid}}" [class.disabled]="disabled" [class.readonly]="readonly"
+            *ngFor="let item of items" (click)="onvalueChanged(item)">
+            {{ item[textField] }}
+            <input type="radio" (change)="onCheckValueChange(item[valueField],true)" [value]="item[valueField]"
+                [checked]="selectedValues==item[valueField]" [name]="uid" [disabled]="item.disable || disabled"
+                [readonly]="item.readonly || readonly" />
+            <span class="checkmark"></span>
+        </label>
+    </div>
+</ng-template>

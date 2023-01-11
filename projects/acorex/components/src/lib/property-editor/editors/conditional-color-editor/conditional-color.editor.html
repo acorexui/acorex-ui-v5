@@ -1,0 +1,80 @@
+<div *ngFor="let r of ranges" [style.border-color]="r.color" class="range-item" (click)="handleEditClick(r)">
+    <div>
+        <div [style.background-color]="r.color"></div>
+        <div>{{ r.display }}</div>
+    </div>
+    <div [attr.title]="getTitle(r.operator)">
+        <div class="value">{{r.value}}</div>
+        <div>
+            <i class="far {{getIcon(r.operator)}}"></i>
+        </div>
+        <div class="value-text">{{'common.value' | trans}}</div>
+        <div class="remove-button" (click)="handleRemoveClick(r)"><i class="far fa-trash-alt"></i></div>
+    </div>
+</div>
+<ax-button icon="far fa-plus" type="success outline" (click)="handleAddClick()">{{ 'common.add-item' | trans  }}
+</ax-button>
+<ng-template #tplEdit>
+    <ax-page>
+        <ax-page-content>
+            <div class="container">
+                <ax-validation-form (onInit)="onFormInit($event)">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'common.condition' | trans  }}</ax-label>
+                            <ax-select-box [(selectedValues)]="editRow.operator" [allowSearch]="false"
+                                [allowNull]="false" [items]="operators">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-select-box>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'common.value' | trans  }}</ax-label>
+                            <div [ngSwitch]="dataType">
+                                <ax-text-box *ngSwitchCase="'string'" [(value)]="editRow.value">
+                                    <ax-validation>
+                                        <ax-validation-rule type="required"></ax-validation-rule>
+                                    </ax-validation>
+                                </ax-text-box>
+                                <ax-select-box *ngSwitchCase="'boolean'" [(selectedValues)]="editRow.value"
+                                    [allowSearch]="false" [allowNull]="false" [items]="booleanItems">
+                                    <ax-validation>
+                                        <ax-validation-rule type="required"></ax-validation-rule>
+                                    </ax-validation>
+                                </ax-select-box>
+                                <ax-number-box *ngSwitchDefault [(value)]="editRow.value"
+                                    [showSeparator]="showSeparator" [decimalNumber]="decimalNumber">
+                                    <ax-validation>
+                                        <ax-validation-rule type="required"></ax-validation-rule>
+                                    </ax-validation>
+                                </ax-number-box>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'conditional-color-property-editor.replaced-color' | trans  }}</ax-label>
+                            <ax-color-picker [(value)]="editRow.color">
+                                <ax-validation>
+                                    <ax-validation-rule type="required"></ax-validation-rule>
+                                </ax-validation>
+                            </ax-color-picker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ax-label>{{ 'conditional-color-property-editor.replaced-title' | trans  }}</ax-label>
+                            <ax-text-box [(value)]="editRow.display">
+                            </ax-text-box>
+                        </div>
+                    </div>
+                </ax-validation-form>
+            </div>
+            <div class="ax-mrg-md"></div>
+        </ax-page-content>
+    </ax-page>
+</ng-template>

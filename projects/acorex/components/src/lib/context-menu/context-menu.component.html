@@ -1,0 +1,42 @@
+<!-- <ul class="ax context-menu {{size}}" [style.width.px]="width">
+    <ng-container *ngFor="let item of items">
+        <li class="context-menu-item" [class.divider]="item.divider" [class.disabled]="item.disable">
+            <div class="startIcon">
+                <i class="{{item.icon}}"></i>
+                <i class="{{item.startIcon}}" *ngIf="!item.icon && item.startIcon"></i>
+            </div>
+            <span>{{item.text}}</span>
+
+            <div class="endIcon">
+                <i class="{{item.endIcon}}" *ngIf="!item.icon && item.startIcon"></i>
+                <i class="far fa-angle-left ax-menu-item-drop-icon"></i>
+            </div>
+        </li>
+    </ng-container>
+
+</ul> -->
+
+<ul #contex class="ax context-menu {{size}}" [style.width.px]="width"
+    [ngClass]="{'animate__animated animate__faster animate__fadeIn': show}">
+    <ng-container *ngTemplateOutlet="recursiveContextMenu; context:{ $implicit: items }"></ng-container>
+</ul>
+
+<ng-template #recursiveContextMenu let-items>
+    <li *ngFor="let item of items" class="context-menu-item" [class.divider]="item.divider"
+        [class.disabled]="item.disable" (click)="handleClickItem(item)">
+        <div class="startIcon">
+            <i class="{{item.icon}}"></i>
+            <i class="{{item.startIcon}}" *ngIf="!item.icon && item.startIcon"></i>
+        </div>
+        <span>{{item.text}}</span>
+
+        <div class="endIcon">
+            <i class="{{item.endIcon}}" *ngIf="!item.icon && item.startIcon"></i>
+            <i class="far fa-angle-left ax-menu-item-drop-icon" *ngIf="item.items?.length > 0"></i>
+        </div>
+        <ul class="ax context-menu child" *ngIf="item.items?.length > 0">
+            <ng-container *ngTemplateOutlet="recursiveContextMenu; context:{ $implicit: item.items }">
+            </ng-container>
+        </ul>
+    </li>
+</ng-template>

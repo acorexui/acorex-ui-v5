@@ -1,0 +1,37 @@
+<div class="color-box">
+    <div class="color-box-pallet">
+        <div class="color-item" *ngFor="let item of colors" [style.background-color]="item.code" [title]="item.code"
+            (click)="onColorClick(item)">
+            <i class="fas fa-check-circle color-active" *ngIf="item.active"></i>
+        </div>
+    </div>
+    <div class="text-input">
+        <ng-container *ngIf="inputFormat=='rgb';else hexTemplate">
+            <div class="color-part">
+                <ax-text-box [(value)]="rColor" (textChange)="handleColorChange()" (onKey)="handleKeyEvent($event)">
+                </ax-text-box>
+            </div>
+            <div class="color-part">
+                <ax-text-box [(value)]="gColor" (textChange)="handleColorChange()" (onKey)="handleKeyEvent($event)">
+                </ax-text-box>
+            </div>
+            <div class="color-part">
+                <ax-text-box [(value)]="bColor" (textChange)="handleColorChange()" (onKey)="handleKeyEvent($event)">
+                </ax-text-box>
+            </div>
+            <div class="color-part switch" (click)="inputFormat='hex'">
+                <span>RGB</span>
+            </div>
+        </ng-container>
+        <ng-template #hexTemplate>
+            <div class="color-part">
+                <ax-text-box [(value)]="value" size="sm" (onKey)="handleKeyEvent($event)">
+                </ax-text-box>
+            </div>
+            <!-- <div class="color-part switch" (click)="inputFormat='rgb'">
+                <span>HEX</span>
+            </div> -->
+        </ng-template>
+
+    </div>
+</div>

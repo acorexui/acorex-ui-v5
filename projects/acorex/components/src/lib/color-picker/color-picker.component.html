@@ -1,0 +1,31 @@
+<ax-drop-down #dropdown fitParent="false" [size]="size" [disabled]="disabled"  [rtl]="rtl">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container header>
+
+        <div class="ax form-item" [class.disabled]="disabled" [attr.id]="uid" #fc>
+            <div class="content" #content>
+                <div class="ax form-control input {{size}}" [class.disabled]="disabled" [class.readonly]="readonly">
+                    <ng-container *ngIf="value; else elseTemplate">
+                        <div [style.background-color]="value" [style.color]="findTextColor(value)"
+                            style="padding:0px 5px;width: 100%;display: flex;align-items: center;">
+                            {{value}}&nbsp;</div>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        {{placeholder}}&nbsp;
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container end>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+    <ng-container panel>
+        <ax-color-box [(value)]="value" 
+            (onColorSelect)="handleItemClick($event)"></ax-color-box>
+    </ng-container>
+</ax-drop-down>

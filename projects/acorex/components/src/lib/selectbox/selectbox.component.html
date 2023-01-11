@@ -1,0 +1,100 @@
+<ax-drop-down #d [size]="size" [fitParent]="fitParent" [dropdownWidth]="dropdownWidth" [rtl]="rtl"
+    [showDropDownButton]="showDropDownButton" [disabled]="disabled" [readonly]="readonly"
+    (dropdownToggle)="dropdownToggleSelecBox($event)">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container header>
+        <div class="ax chips-container" [horizontalScroll]="40">
+            <div class="chips" [class.chips-blank]="mode === 'single'" [title]="item[textField]"
+                *ngFor="let item of selectedItems">
+                <span class="chips-text"
+                    [ngStyle]="{'width': item[textField].length > 15 && this.mode ==='multiple' ? '110px' : 'auto'}">
+                    {{ item[textField] }}
+                </span>
+                <span class="close-icon" (click)="handleItemRemoveClick(item)"
+                    *ngIf="(readonly!=true || itemRemove ==true)&& disabled!=true && (allowNull==true || (selectedItems.length > 1))">
+                    <i class="far fa-times close"></i>
+                </span>
+            </div>
+            <div class="search-wrapper" (click)="onTextBoxClick($event)">
+                <ax-text-box #textBoxSelectBox [textAlign]="textAlign"
+                    [placeholder]="selectedItems.length == 0 ? placeholder : ''" [readonly]="readonly"
+                    [disabled]="disabled" (onkey)="handleKeyEvent($event)" [size]="size"
+                    (onFocus)="onFocusTextBox($event)">
+                </ax-text-box>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container end>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+
+    <ng-container panel>
+        <div *ngIf="allowSearch" class="search-wrapper" style="padding: 0.7em;">
+            <ax-search-box #serchBox [(value)]="text" (onkey)="handleKeyEventSearch($event)"
+                (textChanged)="textChanged($event)" (onButtonClick)="textChanged($event)">
+            </ax-search-box>
+        </div>
+        <div class="ax list-container">
+            <div #listContainer class="list-container-items" (scroll)="scrolled($event)">
+                <ng-container *ngIf="getItems().length>0; then thenTemplate; else elseTemplate"></ng-container>
+                <ng-template #thenTemplate>
+                    <div [class.ax-state-disabled]="isItemDisabled(item)" class="list-item"
+                        *ngFor="let item of getItems();let i = index" [class.focused]="i==currentfocusedIndex"
+                        [class.selected]="isItemSelected(item)" (click)="handleItemClick($event,item)">
+                        <div style="display: flex;">
+                            <ax-check-box *ngIf="showCheckBox" [size]="size" [value]="isItemSelected(item)"
+                                [disabled]="(!allowNull && selectedItems.length === 1 && isItemSelected(item)) || isItemDisabled(item)"
+                                (onClick)="handleItemClick($event,item)">
+                            </ax-check-box>
+                            <ng-container *ngIf="rowTemplate; else elseTemplate">
+                                <div style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;flex: 1;"
+                                    [title]="item[textField]"
+                                    [ngStyle]="(showCheckBox) ? {'padding-inline-start': '0.5rem'}:''">
+                                    <ng-container *ngTemplateOutlet="rowTemplate; context:{ $implicit: item }">
+                                    </ng-container>
+                                </div>
+
+                            </ng-container>
+                            <ng-template #elseTemplate>
+                                <div style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;flex: 1;"
+                                    [title]="item[textField]"
+                                    [ngStyle]="(showCheckBox) ? {'padding-inline-start': '0.5rem'}:''">
+                                    {{ item[textField] }}
+                                </div>
+                            </ng-template>
+
+                        </div>
+
+                    </div>
+
+                </ng-template>
+                <div *ngIf="showLoading" class="ax-pad-sm" style="text-align: center;">
+                    <i class="far fa-spinner-third fa-pulse fa-2x" style="color: var(--ax-primary-color);"></i>
+
+                </div>
+                <!-- <ax-loading-indicator ></ax-loading-indicator> -->
+                <ng-template #elseTemplate>
+                    <ng-container *ngIf="showLoading == true; then searchTemplate else noDataTemplate"></ng-container>
+                    <ng-template #searchTemplate>
+                        <div class="list-item">
+                            {{'common.searching' | trans}}
+                        </div>
+                    </ng-template>
+                    <ng-template #noDataTemplate>
+                        <div class="list-item">
+                            {{'common.noDataFound' | trans}}
+                        </div>
+                    </ng-template>
+
+                </ng-template>
+
+            </div>
+
+        </div>
+    </ng-container>
+
+</ax-drop-down>

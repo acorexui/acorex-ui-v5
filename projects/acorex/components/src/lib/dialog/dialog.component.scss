@@ -1,0 +1,32 @@
+.ax-dialog {
+  background: var(--ax-white-color);
+  display: flex;
+  flex-direction: column;
+  padding: 0.8em;
+
+  .dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .button {
+      margin-inline-end: 0.5em;
+      min-width: 100px;
+    }
+
+    [dir="rtl"] &{
+      flex-direction: row !important;
+    }
+
+    margin-top: 1em;
+
+    .btn {
+      margin: 0 5px;
+    }
+  }
+}

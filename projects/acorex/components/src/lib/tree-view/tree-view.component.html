@@ -1,0 +1,45 @@
+<ul class="ax treeview {{size}}">
+    <ng-template #recursiveList let-list>
+        <ng-container *ngFor="let item of list">
+            <li class="active {{item[hasChildField] ? '':'node'}}" [class.bordered]="bordered"
+                [class.selected]="item.select" [draggable]="allowDrag" (dragstart)="onDragStart($event, item)"
+                [attr.data-id]="item[keyField]" (dragleave)="onDragEnd($event,item)" (dragend)=drop($event)>
+                <div axContextMenu [contextDataItem]="item" [contextMenuItems]="contextMenuItems" [contextMenu]="menu"
+                    (onContextMenuItemClick)="handleOnContextMenuItem($event)"
+                    style="display: flex; cursor: pointer;align-items: center;">
+                    <div class="start-side">
+                        <div *ngIf="item[hasChildField]" class="collapse-icon"
+                            (click)="handleOnNodeClick($event,item,true)">
+                            <i class="fal"
+                                [ngClass]="{'fa-minus': !!item.toggle , 'fa-plus': !item.toggle , 'fa-spinner fa-spin':item.loading }"></i>
+                        </div>
+
+                        <ax-check-box *ngIf="showSelectBox" [disabled]="item.disabledCheckBox" [size]="size"
+                            [indeterminate]="true" [value]="item.select" (onClick)="internalSelectItem(item)">
+                        </ax-check-box>
+
+
+                    </div>
+                    <div class="text-list" (click)="nodeClick(item)" (dblclick)="itemdbClick($event,item)">
+                        <ng-container *ngIf="nodeTemplate; else elseTemplate">
+                            <ng-container *ngTemplateOutlet="nodeTemplate; context:{ $implicit: item }"></ng-container>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            {{item.title}}
+                        </ng-template>
+                    </div>
+                </div>
+                <ul *ngIf="item.loading">
+                    <i class="far "></i>
+                </ul>
+                <ul class="child" *ngIf="item.toggle" style="background-color: white !important;">
+                    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.childeren }">
+                    </ng-container>
+                </ul>
+            </li>
+        </ng-container>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+</ul>
+
+<ax-context-menu #menu></ax-context-menu>

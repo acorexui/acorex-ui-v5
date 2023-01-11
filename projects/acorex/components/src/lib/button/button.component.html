@@ -1,0 +1,17 @@
+<button #container class="ax button form-control {{type}} {{size}} {{cssClass}}" [class.ax-button-icon]="refContent.innerText.length==0 && refContent.children.length == 0" [class.selected]="selected" [class.icon]="icon"
+    [class.icon]="loading" [class.disabled]="disabled || loading" (click)="handleClick($event)" [disabled]="disabled"
+    [ngStyle]="{'width.%': block ? 100 : 'auto'}" [attr.tabindex]="tabIndex">
+    <div class="button-inner-content">
+        <ng-container *ngIf="icon && !loading">
+            <i class="{{icon}} icon"></i>
+            <ng-container *ngIf="refContent.innerText.length==0 && refContent.children.length == 0"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="loading">
+            <i class="far fa-circle-notch fa-spin icon"></i>
+            <ng-container *ngIf="refContent.innerText.length==0 && refContent.children.length == 0"></ng-container>
+        </ng-container>
+        <div class="ax-wrapper" #refContent>
+            <ng-content></ng-content>
+        </div>
+    </div>
+</button>

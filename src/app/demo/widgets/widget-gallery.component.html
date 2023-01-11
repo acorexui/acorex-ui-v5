@@ -1,0 +1,25 @@
+<ax-page>
+    <ax-toolbar>
+        <ax-tab-strip [items]="tabItems" (onTabChanged)="handleOnTabchanged($event)">
+        </ax-tab-strip>
+    </ax-toolbar>
+    <ax-page-content>
+        <div class="ax widget-gallery-list-container">
+            <div *ngFor="let item of visibleItems"
+                (click)="handleAddWidgetMouseClick($event,item)">
+                <div class="widget-item" [ngStyle]="{'border-inline-start-color': item.icon }">
+                    <div class="widget-name">{{item.title}}</div>
+                    <div *ngIf="item.description" class="widget-description">{{item.description}}</div>
+                </div>
+                <div class="widget-edit-menu">
+                    <button class="widget-edit-menu-button">
+                        <i class="far fa-cogs"></i>
+                    </button>
+                    <button class="widget-edit-menu-button" >
+                        <i class="far fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ax-page-content>
+</ax-page>

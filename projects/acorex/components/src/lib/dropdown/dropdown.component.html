@@ -1,0 +1,26 @@
+<div class="ax form-item {{size}}" [class.readonly]="readonly" [attr.id]="uid" [class.disabled]="disabled" #el>
+    <div class="ax items-wrapper">
+        <ng-content select="[start]">
+        </ng-content>
+    </div>
+    <div class="content">
+        <ng-content select="ng-container[header]">
+        </ng-content>
+    </div>
+    <div class="ax items-wrapper">
+        <ax-button *ngIf="showDropDownButton" [disabled]="disabled || readonly" [loading]="loading"
+            icon="far fa-angle-down icon" type="light blank" [size]="size" (click)="handleArrowClick($event)"
+            [tabIndex]="-1">
+        </ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </div>
+</div>
+
+<ng-template #baseTemplate>
+    <!-- [ngStyle]="{'width': dropdownWidth ? dropdownWidth + 'px' : 'unset'}" -->
+    <div class="ax-dropdown-container-bordered" [ngStyle]="{'width': dropdownWidth !== '0px' ? dropdownWidth : 'unset'}">
+        <ng-content select="ng-container[panel]">
+        </ng-content>
+    </div>
+</ng-template>

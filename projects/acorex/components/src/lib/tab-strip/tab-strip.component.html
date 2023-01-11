@@ -1,0 +1,6 @@
+<ul class="tab-strip-container">
+    <ng-container *ngFor="let item of items">
+        <li *ngIf="!!item.visible || item.visible == undefined" [class.active]="item.active"
+            [class.disabled]="item.disable" (click)="handleClick(item)">{{item.text}}</li>
+    </ng-container>
+</ul>

@@ -1,0 +1,9 @@
+<ax-text-area (onValueChanged)="handleValueChange($event)" [value]="value" 
+        [readonly]="readonly" 
+        [allowClear]="clearButton"
+        [placeholder]="placeholder"
+        [rows]="rows"
+        >
+    <ax-validation [rules]="validation?.rules">
+    </ax-validation>
+</ax-text-area>

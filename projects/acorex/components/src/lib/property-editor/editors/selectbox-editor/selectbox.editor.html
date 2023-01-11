@@ -1,0 +1,8 @@
+<ax-select-box [mode]="selectionMode" [textField]="textField" [valueField]="valueField" [selectedValues]="value"
+    [remoteOperation]="remoteOperation" [allowSearch]="allowSearch" [allowNull]="allowNull" [readonly]="readonly"
+    [disabled]="disabled" (selectionChanged)="handleValueChange($event)">
+    <ax-data-source [provideData]="provideData">
+    </ax-data-source>
+    <ax-validation [rules]="validation?.rules">
+    </ax-validation>
+</ax-select-box>

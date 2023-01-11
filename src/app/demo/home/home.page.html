@@ -1,0 +1,8 @@
+<div class="acorex-container">
+    <img src="../../../assets/logo-color.svg" alt="ACoreX">
+    <ul>
+        <ng-container *ngFor="let item of items">
+            <li (click)="onItemClick(item)">{{item.path | titlecase }}</li>
+        </ng-container>
+    </ul>
+</div>

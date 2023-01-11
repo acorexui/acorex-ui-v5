@@ -1,0 +1,21 @@
+<div class="ax form-item" [class.disabled]="disabled" [attr.id]="uid" #fc>
+    <div class="ax items-wrapper">
+        <ng-content select="[start]">
+        </ng-content>
+    </div>
+    <div class="content" #content>
+        <div class="ax form-control input {{size}}" [class.disabled]="disabled" [class.readonly]="readonly" [class.icon]="icon">
+            <input #input type="text" class="ax {{size}}" [textMask]="timeType" [(ngModel)]="textValue" placeholder="{{placeholder}}" [readonly]="readonly" [disabled]="disabled" [ngClass]="setTextAlign()" [class.clear]="value && allowClear" (focus)="handleInputFocus()"
+                (blur)="handleInputBlur($event)" (keypress)='handleKeyPress($event)' (keyup)="handleKeyUp($event)" (keydown)="handleKeyDown($event)" (click)="handleClick($event)">
+            <i class="{{icon}}" *ngIf="icon"></i>
+        </div>
+    </div>
+    <div class="ax items-wrapper">
+        <ax-button *ngIf="value && allowClear" icon="far fa-times" type="danger blank" (click)="clear()" [disabled]="disabled" [tabIndex]="-1"></ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </div>
+</div>
+<!-- [textMask]="{mask: mask , showMask:showMask , guid: maskGuid , keepCharPositions: maskKeepCharPositions}" -->
+<!-- <input #input id="timePickerValue" [textMask]="timeType" type="text" [(ngModel)]="value" (keypress)='handleKeyPress($event)'
+    (keyup)="handleKeyUp($event)" (keydown)="handleKeyDown($event)" (click)="handleClick($event)"> -->

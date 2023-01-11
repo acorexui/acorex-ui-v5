@@ -1,0 +1,75 @@
+.rtl {
+    .toast-progress {
+        right: 0;
+        left: inherit !important;
+    }
+}
+
+.toast-container {
+    overflow: hidden;
+    margin: 0.8rem 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    animation: slide-in-bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    -webkit-animation: slide-in-bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    border-radius: var(--ax-size-border-radius);
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0.8rem;
+        font-weight: 500;
+    }
+    .content {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .toast-close {
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .toast-progress {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        height: 6px;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        animation-name: progressBar;
+      
+    }
+}
+
+@keyframes progressBar {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in-bottom {
+    0% {
+        transform: translateY(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

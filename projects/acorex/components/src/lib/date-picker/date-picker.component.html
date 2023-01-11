@@ -1,0 +1,30 @@
+<ax-drop-down [readonly]="readonly" [fitParent]="false" [size]="size" [showDropDownButton]="false"
+    icon="far fa-calendar-alt" #dropdown maxHeight="unset">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container header>
+        <ax-text-box #input [textAlign]="textAlign" [(value)]="text" [readonly]="false" [textMask]="dateType"
+            [disabled]="disabled" [placeholder]="placeholder" [size]="size" (onkey)="handleKeyPress($event)"
+            (onFocus)="handleInputFocus()" (click)="handleClick()" (onBlur)="handleInputBlur()"
+            (onValueChanged)="textChange($event)"></ax-text-box>
+    </ng-container>
+    <ng-container panel>
+        <ax-calendar-box *ngIf="_renderPicker" [showTodayButton]="showTodayButton"
+            [selectableHoliday]="selectableHoliday" [min]="min" [max]="max" [size]="size" (onClick)="onClick($event)"
+            (onValueChanged)="onDateChange($event)" [type]="type" [(value)]="value" [dayStyle]="dayStyle"
+            [dayMinMaxResoan]="dayMinMaxResoan">
+        </ax-calendar-box>
+    </ng-container>
+    <ng-container end>
+        <ax-button end *ngIf="allowClear && value" [disabled]="disabled" icon="far fa-times icon" type="blank danger"
+            (click)="clear()" [size]="size" [tabIndex]="-1">
+        </ax-button>
+        <ax-button end icon="far fa-calendar-alt icon" type="light blank" (click)="handleButtonClick()"
+            [disabled]="disabled" [size]="size" [tabIndex]="-1"></ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+
+</ax-drop-down>

@@ -1,0 +1,82 @@
+<div>
+    <ax-validation-form #form>
+        <div *ngFor="let rule of items">
+
+            <div *ngIf=" rule.control" [ngSwitch]="rule.control.type" style="padding: 1em;">
+                <div *ngSwitchCase="'textBox'">
+                    <ax-form-group>
+                        <ax-label>{{getValue(rule.onDemandLabel)}}</ax-label>
+                        <ax-text-box (onValueChanged)="textValueChange($event,rule)"
+                            placeholder="مقدار مورد نظر خود را وارد کنید" size="sm">
+                            <ax-validation>
+                                <ax-validation-rule type="required"></ax-validation-rule>
+                            </ax-validation>
+                        </ax-text-box>
+                    </ax-form-group>
+                </div>
+                <div *ngSwitchCase="'selectBox'">
+                    <ax-form-group>
+                        <ax-label>{{getValue(rule.onDemandLabel)}}</ax-label>
+                        <ax-select-box placeholder="مقدار مورد نظر خود را وارد کنید"
+                            [textField]="getOption('textField',rule)" [(selectedItems)]="rule.valueItem"
+                            [valueField]="getOption('valueField',rule)" [mode]="getOption('mode',rule)"
+                            (selectedItemsChange)="selectedItemsChange($event,rule)" size="sm" #selectBoxValue
+                            [remoteOperation]="getOption('remoteOperation',rule)">
+                            <ax-validation>
+                                <ax-validation-rule type="required"></ax-validation-rule>
+                            </ax-validation>
+                            <ax-data-source [provideData]="getProvideData" [params]="rule"></ax-data-source>
+                        </ax-select-box>
+                    </ax-form-group>
+                </div>
+                <div *ngSwitchCase="'numberBox'">
+                    <ax-form-group>
+                        <ax-label>{{getValue(rule.onDemandLabel)}}</ax-label>
+                        <ax-number-box (onValueChanged)="valueChange($event,rule)"
+                            placeholder="مقدار مورد نظر خود را وارد کنید" size="sm">
+                            <ax-validation>
+                                <ax-validation-rule type="required"></ax-validation-rule>
+                            </ax-validation>
+                        </ax-number-box>
+                    </ax-form-group>
+                </div>
+                <div *ngSwitchCase="'datePicker'">
+
+
+                </div>
+                <div *ngSwitchCase="'boolean'">
+                    <ax-form-group>
+                        <ax-label>{{getValue(rule.onDemandLabel)}}</ax-label>
+                        <ax-select-box #selectBoxBoolean (selectedItemsChange)="valueBooleanChange($event,rule)"
+                            allowNull="false" [selectedValues]="rule.value" size="sm" mode="single">
+                            <ax-data-source [provideData]="provideDataBoolean">
+                            </ax-data-source>
+                            <ax-validation>
+                                <ax-validation-rule type="required"></ax-validation-rule>
+                            </ax-validation>
+                        </ax-select-box>
+                    </ax-form-group>
+
+                </div>
+                <div *ngSwitchDefault>
+                    <ax-form-group>
+                        <ax-label>{{getValue(rule.onDemandLabel)}}</ax-label>
+                        <ax-text-box (onValueChanged)="textValueChange($event,rule)"
+                            placeholder="مقدار مورد نظر خود را وارد کنید" size="sm">
+                            <ax-validation>
+                                <ax-validation-rule type="required"></ax-validation-rule>
+                            </ax-validation>
+                        </ax-text-box>
+
+                    </ax-form-group>
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </ax-validation-form>
+</div>

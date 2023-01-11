@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-10">
+        <ax-query-builder #query [query]="items" [fields]="fields" (onRuleChanged)="onRuleChanged($event)">
+
+        </ax-query-builder>
+
+    </div>
+    <div class="col-sm-2">
+
+        <ax-button (click)="getQueryDisplay()"> get Query
+        </ax-button>
+    </div>
+    <div class="col-sm-2">
+
+        <ax-button (click)="runQuery()"> Run Query
+        </ax-button>
+    </div>
+
+    <div class="col-sm-2">
+
+        <ax-button (click)="saveQuery()"> Save Query1
+        </ax-button>
+    </div>
+
+    {{tt}}
+
+</div>

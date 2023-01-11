@@ -1,0 +1,166 @@
+<ax-page>
+    <ax-toolbar>
+        <ax-toolbar-menu [items]="menuItems">
+        </ax-toolbar-menu>
+    </ax-toolbar>
+    <ax-page-content>
+        <div class="row">
+            <div class="col-sm-2">
+                <ax-form-group>
+                    <ax-label>سال ساخت</ax-label>
+                    <!-- <ax-number-box [(value)]="hotelBaseData.buildYear" min="0" (valueChange)="changeChar()" max="9999">
+  </ax-number-box> -->
+                    <ax-select-box #citySelect [textField]="'name'" [(selectedItems)]="selected" [valueField]="'id'">
+                        <!-- <ax-data-source [provideData]="provideSelectGetbuildYear">
+    </ax-data-source> -->
+                    </ax-select-box>
+                </ax-form-group>
+            </div>
+            <div class="col-sm-2">
+                <ax-form-group size="sm">
+                    <ax-label>سال ساخت</ax-label>
+                    <ax-select-box #citySelect [textField]="'name'" [(selectedItems)]="selected" [valueField]="'id'">
+                    </ax-select-box>
+                </ax-form-group>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-4">
+                    <ax-form-group size="md">
+                        <ax-label>Text Box</ax-label>
+                        <ax-text-box [readonly]="false" [showMask]="true" [maskGuid]="true" [mask]="masks"
+                            [disabled]="textBoxDisabled">
+                        </ax-text-box>
+                    </ax-form-group>
+                </div>
+                <div class="col-4">
+                    <ax-form-group size="md">
+                        <ax-label>Text Box</ax-label>
+                        <ax-text-box >
+                        </ax-text-box>
+                    </ax-form-group>
+                </div>
+                <div class="col-4">
+                    <ax-form-group size="md">
+                        <ax-label>Value = {{textBoxValue}}</ax-label>
+                        <ax-button (click)="appendToTextBoxClick($event)">Append 'Test' Text</ax-button>
+                        <ax-button (click)="textBoxDisableToggle($event)">Toggle Disabled</ax-button>
+                    </ax-form-group>
+                </div>
+            </div>
+
+            <ax-validation-form #textAreaValidation>
+                <ax-form-group size="md">
+                    <ax-button (click)="validateTextArea($event)">Validate Text Area</ax-button>
+                    <ax-label>Text Area</ax-label>
+                    <ax-text-area [readonly]="true" [maxLength]="maxlength" [(value)]="textBoxValue" textAlign="left">
+                        <ax-validation>
+
+                            <ax-validation-rule type="required"></ax-validation-rule>
+                        </ax-validation>
+                    </ax-text-area>
+                </ax-form-group>
+            </ax-validation-form>
+
+            <ax-form-group size="md">
+                <ax-label>Password Box</ax-label>
+                <ax-password-box [readonly]="true" [allowClear]="true" disabled="true" textAlign="left">
+                </ax-password-box>
+            </ax-form-group>
+
+
+
+            <div>
+                <ax-label>NumberBosdsdx</ax-label>
+                <ax-number-box [readonly]="false" [max]="200" (onValueChanged)="NumberBosdsdx($event)" [(value)]="text"
+                    [showDoubleCounter]="true" disabled="true" intStep="100000" [decimalNumber]="1" [customStep]=0.2
+                    [showSeparator]="false" [allowClear]="false">
+                </ax-number-box>
+                <br>
+                <ax-label>Search box</ax-label>
+                <ax-search-box [readonly]="true" [(value)]="searchValue" [allowClear]="true"></ax-search-box>
+                {{searchValue}}
+                <br>
+                <ax-label>NumberBox min=12 max=24.55455</ax-label>
+                <ax-number-box   [(value)]="number" [decimalNumber]="1" [customStep]=0.2  [showSeparator]="true" textAlign="left"
+                     [allowClear]="true" min="1" max="10000">
+                </ax-number-box>
+                <br>
+                <ax-label>TimePicker</ax-label>
+                <ax-time-picker [readonly]="true" timeType="hhMmSsAM" icon="far fa-rocket" [allowClear]="true">
+                </ax-time-picker>
+
+                <ax-form-group>
+                    <ax-label>LOV</ax-label>
+                    <ax-lov></ax-lov>
+                </ax-form-group>
+
+                <ax-form-group>
+                    <ax-label>Date Box</ax-label>
+                    <ax-date-picker [allowClear]="true"></ax-date-picker>
+                </ax-form-group>
+            </div>
+        </div>
+
+        <ax-lov #lov1 label="Data LOV" [mode]="'multiple'" [textField]="'jobTitle'" [valueField]="'id'">
+            <ax-data-source [provideData]="provideData">
+            </ax-data-source>
+            <ax-text-column field="jobTitle" caption="jobTitle"></ax-text-column>
+            <ax-text-column field="employmentType" caption="employmentType"></ax-text-column>
+        </ax-lov>
+
+        <div class="container" style="direction: ltr;">
+            <div class="row">
+                <div class="col-2">
+                    <ax-form-group size="md">
+                        <ax-label>Password Box</ax-label>
+                        <ax-password-box [allowClear]="true" textAlign="left"></ax-password-box>
+                    </ax-form-group>
+                </div>
+            </div>
+            <ax-form-group size="md">
+                <ax-label>Password Box</ax-label>
+                <ax-password-box [allowClear]="true" textAlign="left"></ax-password-box>
+            </ax-form-group>
+            <div>
+                <ax-label>NumberBox</ax-label>
+                <ax-number-box [decimalNumber]="1" [customStep]=0.2 [allowClear]="true"></ax-number-box>
+                <br>
+                <ax-label>NumberBox min=12 max=24.5</ax-label>
+                <ax-number-box [decimalNumber]="1" [customStep]=0.2 min=12 max=24.5 textAlign="left"
+                    [allowClear]="true">
+                </ax-number-box>
+                <br>
+                <ax-label>TimePicker</ax-label>
+                <ax-time-picker timeType="hhMmSsAM" icon="far fa-rocket" [allowClear]="true"></ax-time-picker>
+
+                <ax-form-group>
+                    <ax-label>LOV</ax-label>
+                    <ax-lov disabled="true"></ax-lov>
+                </ax-form-group>
+
+
+
+                <div>
+                    <ax-label>NumberBox</ax-label>
+                    <ax-number-box (onValueChanged)="onValueChanged($event)" [decimalNumber]="1" [customStep]=0.2>
+                    </ax-number-box>
+                    <br>
+                    <ax-label>NumberBox min=12 max=24.5</ax-label>
+                    <ax-number-box [decimalNumber]="1" [customStep]=0.2 min=12 max=24.5 [allowClear]="true">
+                    </ax-number-box>
+                    <br>
+                    <ax-label>TimePicker</ax-label>
+                    <ax-time-picker></ax-time-picker>
+                    <br>
+                    <ax-label>timeType="hhMmSsAM"</ax-label>
+                    <ax-time-picker timeType="hhMmSsAM" (onValueChanged)="onValueChanged($event)"></ax-time-picker>
+                </div>
+            </div>
+        </div>
+    </ax-page-content>
+</ax-page>

@@ -1,0 +1,11 @@
+{
+  "name": "@acorex/layout",
+  "version": "4.2.65",
+  "peerDependencies": {
+    "@angular/common": "^13.3.8",
+    "@angular/core": "^13.3.8"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

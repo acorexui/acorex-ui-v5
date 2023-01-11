@@ -1,0 +1,14 @@
+<ax-page>
+    <ax-toolbar>
+        <ax-toolbar-menu [items]="menuItems" (onItemClick)="onItemClick($event)">
+
+        </ax-toolbar-menu>
+    </ax-toolbar>
+    <ax-page-content>
+            <div style="background-color: #eaeaea;height:100%;overflow: auto;">
+                <ax-widget-board [galleryItems]="widgets" #board [provideValue]="provideValue" 
+                    (onConfigChanged)="handleOnConfigChanged($event)" (onWidgetSave)="handleOnWidgetSave($event)">
+                </ax-widget-board>
+            </div>
+    </ax-page-content>
+</ax-page>

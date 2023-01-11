@@ -1,0 +1,68 @@
+<div class="ax-calendar-container {{size}}" [ngClass]="type">
+    <div class="ax-calendar-header">
+        <div class="ax-controll-button">
+            <ax-button type="light blank" (click)="next()">
+                {{'common.next' | trans}}
+            </ax-button>
+        </div>
+        <div class="ax-nav-button" [ngSwitch]="view">
+            <ax-button type="light blank" (click)="changeView()">
+                <ng-container *ngSwitchCase="'day'">
+                    {{viewRange.startTime.add('day',10) | dt:"MMM YYYY"}}
+                </ng-container>
+                <ng-container *ngSwitchCase="'month'">
+                    {{viewRange.startTime | dt:"YYYY"}}
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    {{viewRange.startTime | dt:"YYYY"}} - {{viewRange.endTime | dt:"YYYY"}}
+                </ng-container>
+            </ax-button>
+        </div>
+        <div class="ax-controll-button">
+            <ax-button type="light blank" (click)="prev()">
+                {{'common.prev' | trans}}
+            </ax-button>
+        </div>
+    </div>
+    <div class="ax-calendar-body">
+        <ng-container [ngSwitch]="view">
+            <ng-container *ngSwitchCase="'day'">
+                <div class="ax-month-items">
+                    <ng-container *ngFor='let w of weekdays'>
+                        <div class="ax-month-item">{{w}}</div>
+                    </ng-container>
+                </div>
+                <div class="ax-day-items">
+                    <ng-container *ngFor="let r of matrix">
+                        <div class="ax-day-item ax-state-event" *ngFor="let d of r;trackBy:trackByFn" [title]="getTitle(d.date)" [ngClass]="{'selected': d.selected,'focused':d.focused,'today':d.today,'next-month':d.nextMonth , 'holiday':d.holiday , 'unselect':d.unselect}" [ngStyle]="(findDay(d.date)) ? getStyle(d.date):''"
+                            (click)="setDayClick($event,d)">
+                            {{d.date.dayInMonth}}</div>
+                    </ng-container>
+
+                </div>
+            </ng-container>
+            <div class="ax-month-container" *ngSwitchCase="'month'">
+                <ng-container *ngFor="let r of matrix">
+                    <div class="ax-month-item" *ngFor="let d of r;trackBy:trackByFn" [ngClass]="{'selected': d.selected,'focused':d.focused,'today':d.today}" (click)="setMonthClick($event,d.date)">
+                        <strong>
+                            {{d.date| dt:"MMM"}}
+                        </strong>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="ax-year-container" *ngSwitchCase="'year'">
+                <ng-container class="calendar-row" *ngFor="let r of matrix">
+                    <div class="ax-year-item" *ngFor="let d of r;trackBy:trackByFn" [ngClass]="{'selected': d.selected,'focused':d.focused,'today':d.today}" (click)="setYearClick($event,d.date)">
+                        <strong>{{d.date | dt:"YYYY"}}</strong>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+
+    </div>
+    <div class="ax-calendar-footer">
+        <ax-button (click)="setToday()" *ngIf="showTodayButton" type="dark">
+            {{getTodayName()}}
+        </ax-button>
+    </div>
+</div>

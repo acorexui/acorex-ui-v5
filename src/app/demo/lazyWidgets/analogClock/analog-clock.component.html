@@ -1,0 +1,25 @@
+<div class="widget-title" *ngIf="!cityTitle">{{defultCityTitle}}</div>
+<div class="widget-title" *ngIf="cityTitle">{{cityTitle}}</div>
+<div
+  style="width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <div style="height: 75%; width: 75%; margin-top: 3em;">
+    <div class="clock" #clock>
+      <div class="info-con">
+        <div #date class="info date"></div>
+        <div #day class="info day"></div>
+      </div>
+      <div>
+        <div #hourHand class="hour-hand"></div>
+        <div #minuteHand class="minute-hand"></div>
+        <div #secondHand class="second-hand"></div>
+      </div>
+      <div class="dot"></div>
+      <div>
+        <span class="h3">3</span>
+        <span class="h6">6</span>
+        <span class="h9">9</span>
+        <span class="h12">12</span>
+      </div>
+    </div>
+  </div>
+</div>

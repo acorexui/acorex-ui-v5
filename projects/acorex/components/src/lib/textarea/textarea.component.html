@@ -1,0 +1,13 @@
+<div class="ax form-item {{size}}" [class.disabled]="disabled" [attr.id]="uid">
+    <div class="content">
+        <div class="ax input {{size}}" [class.disabled]="disabled" [class.readonly]="readonly">
+            <textarea [name]="name" [attr.maxlength]="maxLength" rows="{{rows}}" cols="{{cols}}" #input type="text"
+                class="ax icon {{size}}" [ngClass]="setTextAlign()" placeholder="{{placeholder}}" [readonly]="readonly"
+                [disabled]="disabled" value="{{value}}"></textarea>
+        </div>
+    </div>
+    <div class="ax buttons">
+        <ng-content select="ax-button">
+        </ng-content>
+    </div>
+</div>

@@ -1,0 +1,357 @@
+<ax-page>
+  <ax-page-content>
+
+    <label>
+      grid
+    </label>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <ax-button type="primary" size="md" icon="fas fa-rocket" (click)="rebuildClick()">rebuildGrid</ax-button>
+      </div>
+    </div>
+
+
+    <!-- <div style="height: 400px;">
+      <ax-data-grid [rowClass]="getRowClass" #grid (onRowSelectionChanged)="onRowSelectionChanged($event)"
+        (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'" [selectRow]="selectRow"
+        [selectionMode]="'multiple'" [remoteOperation]="true" (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu (onItemClick)="onItemClick($event)" [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+        <ax-selection-column [width]="10"></ax-selection-column>
+
+
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column field="date" caption="Date" [width]="120"></ax-date-column>
+
+        <ax-text-column *ngFor="let item of numColumns" field="employmentType" caption="employmentType" [width]="90">
+        </ax-text-column>
+
+
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+
+
+    <!-- <div style="height: 400px;">
+      <ax-data-grid #grid (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'"
+        [selectRow]="selectRow" [selectionMode]="'multiple'" [remoteOperation]="true"
+        (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu (onItemClick)="onItemClick($event)" [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column field="date" caption="Date" [width]="120"></ax-date-column>
+        <ax-text-column field="employmentType" caption="employmentType" [width]="90">
+        </ax-text-column>
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+
+    </div> -->
+
+
+
+    <!-- <label>
+      grid - columns auto fit
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [sizeColumnsToFit]="true" #grid (selectionChanged)="selectionChanged($event)"
+        [keyField]="'employmentType'" [selectRow]="selectRow" [selectionMode]="'multiple'" [remoteOperation]="true"
+        (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column field="date" caption="Date" [width]="120"></ax-date-column>
+        <ax-text-column field="employmentType" caption="employmentType" [width]="90">
+        </ax-text-column>
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+    <!-- <label>
+      grid - row click selection
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [suppressRowClickSelection]="false" [sizeColumnsToFit]="true" #grid
+        (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'" [selectRow]="selectRow"
+        selectionMode="single" [remoteOperation]="true" (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column field="date" caption="Date" [width]="120"></ax-date-column>
+        <ax-text-column field="employmentType" caption="employmentType" [width]="90">
+        </ax-text-column>
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+    <!-- <label>
+      grid - row click selection - whole row selection only (no cell selection)
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [suppressCellSelection]="true" [suppressRowClickSelection]="false" [sizeColumnsToFit]="true" #grid
+        (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'" [selectRow]="selectRow"
+        selectionMode="single" [remoteOperation]="true" (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column field="date" caption="Date" [width]="120"></ax-date-column>
+        <ax-text-column field="employmentType" caption="employmentType" [width]="90">
+        </ax-text-column>
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+    <!-- <label>
+      grid with Row Detail template
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [sizeColumnsToFit]="true" #grid2 (onRowSelectionChanged)="onRowSelectionChanged($event)"
+        (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'" [selectRow]="selectRow"
+        [selectionMode]="'multiple'" [remoteOperation]="true" (getServerSideGroupKey)="getServerSideGroupKey($event)">
+
+        <ax-grid-detail-template height="400">
+       
+        </ax-grid-detail-template>
+        <ax-toolbar>
+          <ax-toolbar-menu [items]="toolbarItemsEnd" (onItemClick)="handleMenuItemClick2($event)">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column field="id" caption="jobTitle" [width]="300"></ax-text-column>
+        <ax-text-column field="employmentType" caption="employmentType" [width]="300">
+        </ax-text-column>
+        <ax-command-column [items]="commandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+    <!-- [takeCount]="takeCount" -->
+    <div [style.height]="searchVisible?'500px':'800px'">
+      <ax-data-grid [pagination]="false" #gridTree [loadOnInit]="true" (selectionChanged)="selectionChanged($event)"
+        (rowSelectionChange)="rowSelectionChange($event)" (onRowSelectionChanged)="onRowSelectionChanged($event)"
+        [keyField]="'hotelId'" [selectionMode]="'multiple'" [remoteOperation]="true">
+
+        <ax-data-source [provideData]="getReserveListGrid">
+        </ax-data-source>
+        <ax-command-column [items]="commandItems">
+        </ax-command-column>
+        <ax-selection-column></ax-selection-column>
+        <!--
+           <ax-check-column field="status" caption="وضعیت" pinned="start"></ax-check-column>
+           <ax-check-column field="status" caption="وضعیت"></ax-check-column>
+        <ax-text-column field="Name" caption="Name" [width]="120"></ax-text-column>
+       -->
+        <!-- <ax-text-column field="code" caption="کد" [width]="100">
+          <ax-cell-template>
+            <ng-template let-data>
+              {{num | separator : '' : 2}}
+            </ng-template>
+          </ax-cell-template>
+
+        </ax-text-column> -->
+        <ax-text-column [floatingFilter]="true" field="agencyName" caption="شرح" [width]="600">
+        </ax-text-column>
+        <ax-text-column [floatingFilter]="true" field="reserveId" caption="کدترمینولوژی" [width]="200">
+        </ax-text-column>
+        <ax-text-column [floatingFilter]="true" field="Count" caption="نامترمینولوژی" [width]="600">
+        </ax-text-column>
+
+
+        <!-- <ax-row-number-column>
+
+        </ax-row-number-column> -->
+      </ax-data-grid>
+
+
+    </div>
+
+    <label>
+
+    </label>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <ax-button type="primary" size="md" icon="fas fa-rocket" (click)="refreshClick()">Refresh</ax-button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <ax-button type="primary" size="md" icon="fas fa-rocket" (click)="resizeGrid()">resizeGrid</ax-button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <ax-button type="primary" size="md" icon="fas fa-rocket" (click)="unselect()">unselect</ax-button>
+      </div>
+    </div>
+
+    <!-- <div style="height: 800px;">
+      <ax-data-grid [showCheckBox]="false" [loadOnInit]="false" [sizeColumnsToFit]="true" #gridTree
+        [selectionMode]="'multiple'" [keyField]="'id'" [hasChildField]="'hasChild'" [remoteOperation]="true">
+        <ax-data-source [provideData]="provideData">
+        </ax-data-source>
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column field="jobTitle" caption="jobTitle" [width]="300">
+
+        </ax-text-column>
+        <ax-text-column [treeIndex]=0 field="employmentType" caption="employmentType" [width]="300"></ax-text-column>
+
+        <ax-text-column caption="employmentType" [width]="300">
+          <ax-cell-template>
+            <ng-template let-data>
+              <span class='fa fa-trash'>dffdf</span>
+
+
+            </ng-template>
+          </ax-cell-template>
+        </ax-text-column>
+        <ax-command-column [items]="commandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+
+    <!-- <label>
+      group By server
+    </label>
+    <div style="height: 300px;">
+      <ax-data-grid [rowClass]="getRowClass" [groupHideOpenParents]="true" [keyField]="'id'" [sizeColumnsToFit]="true"
+        #grid [selectionMode]="'multiple'" [remoteOperation]="true" [showCheckBox]="true"
+        (selectionChanged)="selectionChangedGroup($event)">
+        <ax-data-source [provideData]="provide2Data">
+        </ax-data-source>
+        <ax-selection-column pinned="end" [condition]="selectionCondition"></ax-selection-column>
+        <ax-text-column pinned="end" groupIndex='1' field="startDate" caption="startDate" [width]="300">
+        </ax-text-column>
+        <ax-text-column field="endDate" caption="endDate" [width]="300" [checkbox]="false">
+        </ax-text-column>
+        <ax-text-column groupIndex='2' field="groupName" caption="groupName" [width]="300">
+        </ax-text-column>
+        <ax-text-column field="yearId" caption="yearId" [width]="300">
+        </ax-text-column>
+        <ax-text-column field="seasonType" caption="seasonType" [width]="300">
+        </ax-text-column>
+
+        <ax-command-column [items]="commandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div>
+
+    <label>
+      group By local
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [sizeColumnsToFit]="true" #grid [selectionMode]="'multiple'" [remoteOperation]="false">
+        <ax-data-source [provideData]="provide3Data">
+        </ax-data-source>
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column groupIndex='0' field="country" caption="country" [width]="300">
+        </ax-text-column>
+        <ax-text-column groupIndex='1' field="year" caption="year" [width]="300"></ax-text-column>
+        <ax-text-column field="sport" caption="sport" [width]="300"></ax-text-column>
+        <ax-text-column field="gold" caption="gold" [width]="300"></ax-text-column>
+        <ax-text-column field="silver" caption="silver" [width]="300"></ax-text-column>
+        <ax-command-column [items]="commandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div>
+
+    <label>
+      group By local - row click selection
+    </label>
+    <div style="height: 400px;">
+      <ax-data-grid [suppressRowClickSelection]="false" [sizeColumnsToFit]="true" #grid [selectionMode]="'multiple'"
+        [remoteOperation]="false">
+        <ax-data-source [provideData]="provide3Data">
+        </ax-data-source>
+        <ax-selection-column></ax-selection-column>
+        <ax-text-column groupIndex='0' field="country" caption="country" [width]="300">
+        </ax-text-column>
+        <ax-text-column groupIndex='1' field="year" caption="year" [width]="300"></ax-text-column>
+        <ax-text-column field="sport" caption="sport" [width]="300"></ax-text-column>
+        <ax-text-column field="gold" caption="gold" [width]="300"></ax-text-column>
+        <ax-text-column field="silver" caption="silver" [width]="300"></ax-text-column>
+        <ax-command-column [items]="commandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div>
+
+    <label>
+      last grid
+    </label>
+    <div style="height:100%;">
+      <ax-data-grid #grid (onRowSelectionChanged)="onRowSelectionChanged($event)"
+        (selectionChanged)="selectionChanged($event)" [keyField]="'employmentType'" [selectRow]="selectRow"
+        [selectionMode]="'multiple'" [remoteOperation]="true" (getServerSideGroupKey)="getServerSideGroupKey($event)">
+        <ax-toolbar>
+          <ax-toolbar-menu (onItemClick)="onItemClick($event)" [items]="toolbarItemsEnd">
+          </ax-toolbar-menu>
+          <div></div>
+          <ax-toolbar-search></ax-toolbar-search>
+        </ax-toolbar>
+        <ax-data-source [provideData]="provide">
+        </ax-data-source>
+        <ax-selection-column [menuColumnDisable]="true"></ax-selection-column>
+        <ax-text-column field="id" caption="jobTitle" [width]="120"></ax-text-column>
+        <ax-date-column [floatingFilter]="true" [menuColumnDisable]="true" field="date" caption="Date" [width]="120">
+        </ax-date-column>
+        <ax-text-column [floatingFilter]="true" *ngFor="let item of numColumns" field="employmentType"
+          caption="employmentType" [width]="90">
+        </ax-text-column>
+        <ax-command-column [items]="getCommandItems" (onItemClick)="onCommandItemClick($event)">
+        </ax-command-column>
+      </ax-data-grid>
+    </div> -->
+  </ax-page-content>
+</ax-page>

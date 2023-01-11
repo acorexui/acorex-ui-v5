@@ -1,0 +1,104 @@
+.ax {
+  &.selection-list {
+    display: flex;
+
+    &.vertical {
+      flex-direction: column;
+      margin-block-end: 1rem;
+
+      label {
+        margin-block-end: 1rem;
+      }
+    }
+
+    &.horizontal {
+      flex-direction: row;
+      margin-block-end: 1rem;
+
+      label {
+        margin-inline-end: 1rem;
+      }
+    }
+  }
+}
+.ax {
+  &.radio {
+    display: block;
+    position: relative;
+    padding-inline-start: 2em;
+    line-height: 1.5em;
+    cursor: pointer;
+    font-size: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    &.readonly,
+    &.disabled {
+        opacity: 0.7;
+    }
+    &.disabled {
+        cursor: not-allowed;
+    }
+
+  }
+
+  /* Hide the browser's default radio */
+  &.radio input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom radio */
+  &.radio .checkmark {
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    height: 1.5em;
+    width: 1.5em;
+    background-color: var(--ax-white-color);
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--ax-border-color);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+
+  /* On mouse-over, add a grey background color */
+  &.radio:hover input ~ .checkmark {
+    border-color: var(--ax-border-dark-color);
+  }
+
+  /* When the radio is checked, add a blue background */
+  &.radio input:checked ~ .checkmark {
+    background-color: var(--ax-white-color);
+    border-color: var(--ax-primary-color);
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  &.radio .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    border-radius: 50%;
+  }
+
+  /* Show the checkmark when checked */
+  &.radio input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  &.radio .checkmark:after {
+    left: 31.5%;
+    top: 33.3%;
+    width: 0.5em;
+    height: 0.5em;
+    background-color: var(--ax-primary-color);
+    border-radius: 50%;
+  }
+}

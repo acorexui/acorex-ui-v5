@@ -1,0 +1,18 @@
+<h1>Jalali Calendar</h1>
+<!-- <ax-calendar-box [dayStyle]="dayStyle" size="md" (onValueChanged)="handleValueChange($event)"></ax-calendar-box> -->
+
+<!-- <h1>Gregorian Calendar</h1>
+<ax-calendar-box size="md" (onValueChanged)="handleValueChange($event)" type="gregorian"></ax-calendar-box>
+
+<h1>Calendar Sizes</h1>
+<ax-calendar-box size="xxs" (onValueChanged)="handleValueChange($event)"></ax-calendar-box>
+<ax-calendar-box size="xs" (onValueChanged)="handleValueChange($event)"></ax-calendar-box>
+<ax-calendar-box size="sm" (onValueChanged)="handleValueChange($event)"></ax-calendar-box>
+<ax-calendar-box size="md" (onValueChanged)="handleValueChange($event)"></ax-calendar-box>
+<ax-calendar-box size="lg" (onValueChanged)="handleValueChange($event)"></ax-calendar-box>
+<ax-calendar-box size="xl" (onValueChanged)="handleValueChange($event)"></ax-calendar-box> -->
+<div style="width: 320px;">
+    <ax-calendar-box size="xxl" (onValueChanged)="handleValueChange($event)" type="gregorian" [showTodayButton]="true">
+    </ax-calendar-box>
+</div>
+<p>Selected Data: {{date}}</p>

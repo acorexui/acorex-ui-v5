@@ -1,0 +1,25 @@
+<div class="ax form-item" [class.disabled]="disabled" [attr.id]="uid">
+    <div class="ax items-wrapper">
+        <ng-content select="[start]">
+        </ng-content>
+    </div>
+    <div class="content" #content>
+        <div class="ax input form-control {{size}}" [class.disabled]="disabled" [class.readonly]="readonly"
+            [class.icon]="icon">
+            <input #input type="text" class="ax {{size}}" [(ngModel)]="value"
+                (input)="onSearchChanged($event.target.value)" [placeholder]="placeholder" [readonly]="readonly"
+                [disabled]="disabled" [ngClass]="setTextAlign()" [class.clear]="value && allowClear"
+                (focus)="handleInputFocus($event)" (blur)="handleInputBlur($event)" (keyup)="handleKeyEvent($event)"
+                (keydown)="handleKeyEvent($event)">
+            <i class="{{icon}}" *ngIf="icon"></i>
+        </div>
+    </div>
+    <div class="ax items-wrapper">
+        <ax-button [size]="size" *ngIf="value && allowClear" icon="far fa-times" type="danger blank" (click)="clear()"  [tabIndex]="-1">
+        </ax-button>
+        <ax-button [size]="size" type="light blank" icon="far fa-search" end (click)="click($event)"  [tabIndex]="-1">
+        </ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </div>
+</div>

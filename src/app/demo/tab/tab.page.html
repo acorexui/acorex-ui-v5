@@ -1,0 +1,24 @@
+<ax-tab-strip [items]="items">
+
+</ax-tab-strip>
+<br><br>
+<ax-tab-view (onActiveTab)="onActiveTab($event)">
+    <ax-tab caption="First Tab" name="ali">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+            sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </ax-tab>
+    <ax-tab caption="Second Tab">
+        <p>Second</p>
+    </ax-tab>
+    <ax-tab caption="Fourth Tab">
+        <p>Fourth</p>
+    </ax-tab>
+    <ax-tab caption="Fifth Tab">Empty</ax-tab>
+</ax-tab-view>

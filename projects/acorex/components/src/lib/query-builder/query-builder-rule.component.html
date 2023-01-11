@@ -1,0 +1,135 @@
+<div class="condition" *ngIf="parent">
+    <div class="text {{parent.condition}}">
+        <span>{{parent.condition}}</span>
+    </div>
+</div>
+<div class="handler">
+    <i class="far fa-grip-lines-vertical"></i>
+</div>
+
+<div class="caption" [ngClass]="{'editable': isEditing}">
+    <ng-container *ngIf="isEditing;else fieldsTemplate">
+        <ax-form-group>
+            <ax-select-box [readonly]="mode == 'edit'" (selectionChanged)="captionChange($event)" allowNull="false"
+                [(selectedItems)]="rule.dataFieldItem" textField="caption" valueField="dataField" [items]="fields"
+                mode="single">
+            </ax-select-box>
+        </ax-form-group>
+    </ng-container>
+    <ng-template #fieldsTemplate>
+        <div (click)="handleEditClick()">
+            {{rule.caption}}
+        </div>
+    </ng-template>
+</div>
+
+<div class="operator" [ngClass]="{'editable': isEditing,'radius':!showValue}">
+    <ng-container *ngIf="isEditing;else operatorTemplate">
+        <ax-form-group>
+            <ax-select-box [readonly]="mode == 'edit'" *ngIf="showOperatorSelectBox" [(selectedValues)]="rule.operator"
+                #selectBox (selectedItemsChange)="operatorChange($event)" allowNull="false" mode="single">
+                <ax-data-source [provideData]="provideDataOperator">
+                </ax-data-source>
+            </ax-select-box>
+        </ax-form-group>
+    </ng-container>
+    <ng-template #operatorTemplate>
+        <div class="text" (click)="handleEditClick()">
+            {{('queryBuilder.'+rule.operator) | trans}}
+        </div>
+    </ng-template>
+</div>
+<div *ngIf="showValue" class="value" [ngClass]="{'editable': isEditing}">
+    <ng-container *ngIf="isEditing;else valueTemplate">
+
+        <div *ngIf=" rule.control && !isOnDemandLabel" [ngSwitch]="rule.control.type">
+            <div *ngSwitchCase="'textBox'">
+                <ax-form-group>
+                    <ax-text-box (onValueChanged)="valueChange($event)" placeholder="مقدار مورد نظر خود را وارد کنید"
+                        [(value)]="rule.value">
+                    </ax-text-box>
+                </ax-form-group>
+            </div>
+            <div *ngSwitchCase="'selectBox'">
+                <ax-form-group>
+                    <ax-select-box *ngIf="showSelectBox" [mode]="getOption('mode')"
+                        [remoteOperation]="getOption('remoteOperation')" [valueField]="getOption('valueField')"
+                        placeholder="مقدار مورد نظر خود را وارد کنید" [textField]="getOption('textField')"
+                        [(selectedItems)]="rule.valueItem" (selectedItemsChange)="selectedItemsChange($event)"
+                        #selectBoxValue>
+                        <ax-data-source [provideData]="getProvideData"></ax-data-source>
+                    </ax-select-box>
+                </ax-form-group>
+            </div>
+
+            <div *ngSwitchCase="'numberBox'">
+                <ax-form-group>
+                    <ax-number-box [decimalNumber]="2" (onValueChanged)="valueChange($event)"
+                        placeholder="مقدار مورد نظر خود را وارد کنید" [(value)]="rule.value">
+                    </ax-number-box>
+                </ax-form-group>
+            </div>
+            <div *ngSwitchCase="'datetime'">
+                <ax-date-picker label="From" [(value)]="rule.value" (onValueChanged)="valueChange($event)">
+                </ax-date-picker>
+
+            </div>
+            <div *ngSwitchCase="'boolean'">
+
+                <ax-form-group>
+                    <ax-select-box #selectBoxBoolean (selectedItemsChange)="valueBooleanChange($event)"
+                        allowNull="false" [selectedValues]="rule.value" mode="single">
+                        <ax-data-source [provideData]="provideDataBoolean">
+                        </ax-data-source>
+                    </ax-select-box>
+                </ax-form-group>
+
+            </div>
+            <div *ngSwitchDefault>
+                <ax-form-group>
+                    <ax-text-box (onValueChanged)="valueChange($event)" placeholder="مقدار مورد نظر خود را وارد کنید"
+                        [(value)]="rule.value">
+                    </ax-text-box>
+
+                </ax-form-group>
+
+            </div>
+        </div>
+
+        <div *ngIf="isOnDemandLabel">
+
+            <ax-text-box #textBoxNameValue [value]="getOnDemandName(rule.onDemandLabel)"
+                (onValueChanged)="onDemandLabelChange($event)" placeholder="نام متغیر خود را وارد کنید">
+                <!-- <ax-validation>
+                    <ax-validation-rule type="required"></ax-validation-rule>
+                </ax-validation> -->
+            </ax-text-box>
+
+
+        </div>
+
+    </ng-container>
+    <ng-template #valueTemplate>
+        <div (click)="handleEditClick()">
+
+            {{rule.text}}
+
+        </div>
+    </ng-template>
+</div>
+
+<div class="buttons-list">
+    <div *ngIf="showValue && isEditing && mode == 'new'" class="button variable"
+        [ngClass]="{'active-button': isOnDemandLabel}">
+        <i class="far fa-dollar-sign"></i>
+        <ax-check-box [value]="isOnDemandLabel" (onClick)="onDemandLabel($event)">
+        </ax-check-box>
+    </div>
+
+    <div class="button commit" (click)="handleCommitClick()" *ngIf="isEditing">
+        <i class="far fa-check"></i>
+    </div>
+    <div class="button remove" (click)="handleRemoveClick()" *ngIf="mode == 'new'">
+        <i class="far fa-times"></i>
+    </div>
+</div>

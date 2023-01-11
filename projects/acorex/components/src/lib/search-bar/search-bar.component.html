@@ -1,0 +1,49 @@
+<div>
+    <ax-drop-down [fitParent]="fitParent" [dropdownWidth]="dropdownWidth" [size]="size" [showDropDownButton]="false"
+        icon="far fa-sliders-h" #dropdown maxHeight="unset">
+        <ng-container start>
+            <ng-content select="[start]">
+            </ng-content>
+        </ng-container>
+        <ng-container header>
+            <div class="ax chips-container">
+                <div class="chips" *ngFor="let item of _filterItems">
+                    <span class="chips-text" style="direction:rtl;">
+                        <b>{{_handleShowTitleSelected(item)}}</b> {{_handleShowValueSelected(item)}}
+                    </span>
+                    <span class="close-icon" (click)="handleItemRemoveClick(item)">
+                    </span>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container panel>
+            <div class="panel-box">
+                <ax-validation-form #form>
+                    <ng-container *ngFor="let item of _items">
+                        <div class="row">
+                            <ng-container *ngFor="let prop of item.items">
+                                <div *ngIf="prop.property.visible != false" class="{{renderCol(prop.property.col)}}">
+                                    <div>
+                                        <ax-label>{{prop.property.title}}</ax-label>
+                                        <ng-container ax-property-editor-renderer [validationForm]="form"
+                                            [property]="prop" [context]="_context"
+                                            (onValueChange)="handleValueChange($event)"></ng-container>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <div class="footer-button">
+                        <ax-button (click)="search()">{{'common.search' | trans}}</ax-button>
+                        <ax-button type="blank danger" (click)="clear()">{{'dataGrid.clearFilter' | trans}}</ax-button>
+                    </div>
+                </ax-validation-form>
+            </div>
+        </ng-container>
+        <ng-container end>
+            <ax-button end icon="far fa-sliders-h icon" type="light blank" [disabled]="disabled" [size]="size"
+                [tabIndex]="-1" (click)="handleButtonClick()">{{'common.search' | trans}}</ax-button>
+        </ng-container>
+
+    </ax-drop-down>
+</div>

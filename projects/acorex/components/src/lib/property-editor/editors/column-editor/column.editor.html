@@ -1,0 +1,75 @@
+<div *ngFor="let c of columns" class="column-item">
+    <div>
+        <div>{{c.fieldName}} - {{c.caption}}</div>
+    </div>
+    <div>
+        <div>
+        </div>
+        <div class="remove-button" (click)="handleRemoveClick(c)"><i class="far fa-trash-alt"></i></div>
+    </div>
+</div>
+<ax-button icon="far fa-plus" size="sm" type="success outline" (click)="handleAddClick()">ستون ها</ax-button>
+<ng-template #tplEdit>
+    <ax-page>
+        <ax-page-content>
+            <div class="container">
+                <div class="ax-mrg-md"></div>
+                <div class="table">
+                    <div class="thead">
+                        <div class="tr">
+                            <div class="th">
+                                <div style="width: 5px;"></div>
+                                نام
+                            </div>
+                            <div class="th">عنوان</div>
+                            <div class="th">نوع</div>
+                            <div class="th">نوع نمایش</div>
+                            <div class="th">به عنوان هدر</div>
+                            <div class="th">تکمیل توسط کاربر</div>
+                            <div class="th">عملیات</div>
+                        </div>
+                    </div>
+                    <div class="tbody">
+                        <div cdkDropList class="drag-drop-table-item" (cdkDropListDropped)="drop($event)">
+                            <div class="tr  drag-drop-item-box" *ngFor="let c of columns" cdkDrag>
+                                <div class="td">
+                                    <div>
+                                    </div>
+                                    <ax-text-box size="sm" [(value)]="c.fieldName" [allowClear]="true"></ax-text-box>
+                                </div>
+                                <div class="td">
+                                    <ax-text-box size="sm" [(value)]="c.caption" [allowClear]="true"></ax-text-box>
+                                </div>
+                                <div class="td">
+                                    <ax-select-box size="sm" textField="title" valueField="id">
+                                        <ax-data-source [provideData]="handleDataReceived"></ax-data-source>
+                                    </ax-select-box>
+                                </div>
+                                <div class="td">
+                                    <ax-text-box size="sm" [(value)]="c.displayType"></ax-text-box>
+                                </div>
+                                <div class="td">
+                                    <ax-check-box size="md" [(value)]="c.rowHeader"></ax-check-box>
+                                </div>
+                                <div class="td">
+                                    <ax-check-box size="md" [(value)]="c.fillByUser"></ax-check-box>
+                                </div>
+                                <div class="td">
+                                    <ax-button type="danger blank" icon="far fa-trash-alt" (click)="handleRemoveClick(c)">
+                                    </ax-button>
+                                    <ax-button type="primary blank" icon="far fa-ellipsis-v">
+                                    </ax-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ax-mrg-md"></div>
+            <div style="display: flex; justify-content: flex-end;margin-left: 15px;">
+                <ax-button icon="far fa-plus" size="sm" type="primary" (click)="handleAddColumn()">افزودن ستون جدید
+                </ax-button>
+            </div>
+        </ax-page-content>
+    </ax-page>
+</ng-template>

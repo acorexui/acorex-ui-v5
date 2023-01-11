@@ -1,0 +1,69 @@
+@import "./variables.scss";
+@import "./mixin.scss";
+
+.ax {
+  &.buttons {
+    display: inline-flex;
+    flex-direction: row;
+    font-family: inherit;
+    font-size: 0.875rem;
+    vertical-align: baseline;
+    height: calc(var(--ax-base-size) * var(--ax-base-ratio));
+
+    .button {
+      margin: 0 !important;
+      border-radius: 0 !important;
+      font-size: inherit !important;
+      margin-inline-start: 0.25em;
+    }
+  }
+
+  &.button {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    vertical-align: baseline;
+    text-transform: none;
+    text-shadow: none;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    padding: 0 1rem;
+    height: calc(var(--ax-base-size) * var(--ax-base-ratio));
+    &.ax-button-icon {
+      width: calc(var(--ax-base-size) * var(--ax-base-ratio));
+      height: calc(var(--ax-base-size) * var(--ax-base-ratio));
+      padding: 0;
+    }
+    .button-inner-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+
+      .icon {
+        margin-inline-end: 0.5rem;
+        margin-inline-start: 0.5rem;
+      }
+    }
+
+    * {
+      pointer-events: none;
+    }
+
+    @include ax-border-radius(var(--ax-size-border-radius));
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      @include ax-transition-all();
+    }
+
+    &:focus {
+      @include ax-transition-all();
+    }
+  }
+}

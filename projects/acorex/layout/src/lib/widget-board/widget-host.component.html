@@ -1,0 +1,30 @@
+<div class='widget-container'>
+    <div class="widget-config-overlay" *ngIf="!isConfigured" (click)="handleConfig($event)">
+        <div class="widget-title">{{config.title}}</div>
+        <div class="widget-config-box">
+            <div class="config-title">{{ 'widget-board.configure' | trans}}</div>
+            <div class="config-icon" *ngIf="!readonly"><i class="fas fa-cogs fa-5x" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <div class='widget-edit-overlay' >
+        <div class='widget-edit-menu'>
+            <button class="widget-edit-menu-button" (click)="handleConfig($event)"
+                (mousedown)="$event.stopPropagation()" *ngIf="_hasProps" (mouseup)="$event.stopPropagation()">
+                <i class="far fa-cogs" aria-hidden="true"></i>
+            </button>
+            <button class="widget-edit-menu-button" (click)="remove($event)" (mousedown)="$event.stopPropagation()"
+                (mouseup)="$event.stopPropagation()">
+                <i class="far fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+    </div>
+    <div class="widget-options-menu"  *ngIf="_hasMenu && !readonly">
+        <ax-menu [items]='configMenuItem' direction="horizontal"></ax-menu>
+    </div>
+    <!-- <ax-loading-panel [visible]="isBusy">
+    </ax-loading-panel> -->
+    <div class="widget-content">
+        <ng-container #vc></ng-container>
+    </div>
+</div>

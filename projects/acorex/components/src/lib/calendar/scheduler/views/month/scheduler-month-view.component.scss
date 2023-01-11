@@ -1,0 +1,55 @@
+.ax-sheduler-month-view {
+    .day-num {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        font-size: smaller;
+        padding: 1px 5px;
+        display: flex;
+        border-radius: 10%;
+        align-items: center;
+        justify-content: center;
+
+        &.first-day-month {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        &.today {
+            background-color: var(--primary-light-color);
+            color: var(--danger-fore-color);
+        }
+    }
+
+    .view-more {
+        position: absolute;
+        bottom: 0;
+        font-size: x-small;
+        right: 0;
+        padding: 0 5px;
+        width: 100%;
+        cursor: pointer;
+        text-align: center;
+        background-color: var(--gray-dark-color);
+
+        &:hover {
+            
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12), 0 3px 5px -1px rgba(0,0,0,.2);
+        }
+    }
+
+    .event-wrapper {
+        position: absolute;
+        top: 30px;
+        left: 0px;
+
+        .event {
+            position: absolute;
+        }
+    }
+}

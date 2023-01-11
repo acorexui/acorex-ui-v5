@@ -1,0 +1,9 @@
+.ax-popover-container {
+  .ax-popover-container-bordered {
+    background: var(--ax-white-color);
+    border: 1px solid;
+    border-color: var(--ax-border-color);
+    border-radius: var(--ax-border-radius-size);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+  }
+}

@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "core",
+			"problemMatcher": [],
+			"label": "npm: core",
+			"detail": "ng build @acorex/core --watch"
+		},
+		{
+			"type": "npm",
+			"script": "components",
+			"problemMatcher": [],
+			"label": "npm: components",
+			"detail": "ng build @acorex/components --watch"
+		},
+		{
+			"type": "npm",
+			"script": "data-grid",
+			"problemMatcher": [],
+			"label": "npm: data-grid",
+			"detail": "ng build @acorex/data-grid --watch"
+		},
+		{
+			"type": "npm",
+			"script": "layout",
+			"problemMatcher": [],
+			"label": "npm: layout",
+			"detail": "ng build @acorex/layout --watch"
+		},
+		{
+			"type": "npm",
+			"script": "core-prod",
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "components-prod",
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "data-grid-prod",
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "layout-prod",
+			"problemMatcher": []
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"problemMatcher": [],
+			"label": "npm: start",
+			"detail": "ng serve --port 1010 --open"
+		}
+	]
+}

@@ -1,0 +1,47 @@
+@import "./buttons.scss";
+@import "./calendar.scss";
+@import "./checkbox.scss";
+@import "./context-menu.scss";
+@import "./drawer.scss";
+@import "./data-grid.scss";
+@import "./fieldset.scss";
+@import "./list.scss";
+@import "./menu.scss";
+@import "./progress.scss";
+@import "./selection-list.scss";
+@import "./forms.scss";
+@import "./tooltip.scss";
+@import "./tab.scss";
+@import "./tab-strip.scss";
+@import "./toast.scss";
+@import "./treeview.scss";
+@import "./upload.scss";
+@import "./master.scss";
+@import "./page.scss";
+@import "~animate.css/animate.min.css";
+* {
+    box-sizing: border-box;
+    outline-color: transparent;
+    &:focus {
+        outline: none;
+      }
+}
+
+html,
+body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+}
+

@@ -1,0 +1,33 @@
+<ul class="ax nav-tabs">
+  <li
+    *ngFor="let tab of tabs"
+    (click)="selectTab(tab)"
+    [class.active]="tab.active"
+    [class.flex-sm-fill]="fullWidth"
+  >
+    <i class="{{ tab.icon }}"></i>
+    <span>{{ tab.caption }}</span>
+  </li>
+  <!-- dynamic tabs -->
+  <li
+    *ngFor="let tab of dynamicTabs"
+    (click)="selectTab(tab)"
+    [class.active]="tab.active"
+    [class.flex-sm-fill]="fullWidth"
+  >
+    <i class="{{ tab.icon }}"></i>
+    <span>
+      {{ tab.caption }}
+      <i
+        *ngIf="tab.isCloseable"
+        (click)="closeTab(tab)"
+        class="far fa-times"
+      >
+      </i>
+    </span>
+  </li>
+</ul>
+<div class="ax-tab-container">
+  <ng-content></ng-content>
+<ng-template dynamic-tabs #container></ng-template>
+</div>

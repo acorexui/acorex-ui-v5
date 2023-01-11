@@ -1,0 +1,83 @@
+.ax {
+    &.widget-gallery-list-container {
+        height: 65vh;
+        padding: var(--ax-size-sm);
+        overflow-y: auto;
+
+        .widget-item {
+            border-inline-start: var(--ax-primary-color) 10px solid;
+            padding: var(--ax-size-lg);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            line-height: initial;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            cursor: pointer;
+            margin-block-end: var(--ax-size-sm);
+
+            &:hover {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                background-color: var(--ax-primary-trans-light-color);
+            }
+
+            .widget-name {
+                font-size: large;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: #5a5a5a;
+            }
+
+            .widget-description {
+                margin-block-start: var(--ax-size-sm);
+                font-size: smaller;
+                color: var(--ax-gray-color);
+            }
+
+            .widget-edit-overlay {
+                display: none;
+                background: rgba(255, 255, 255, .5);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                z-index: 10;
+
+                .widget-edit-menu {
+                    margin: 6px;
+                    text-align: end;
+                    float: inline-end;
+                    opacity: 1;
+                    transition: opacity 1s ease;
+
+                    .widget-edit-menu-button {
+                        display: inline-block;
+                        background-color: #f0f0f0;
+                        border-radius: 1px;
+                        border: 2px solid #fff;
+                        box-sizing: border-box;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        padding: 0;
+                        height: 32px;
+                        width: 32px;
+                        cursor: pointer;
+                        color: #666;
+
+                        &:hover {
+                            border-color: #a6a6a6;
+                            background-color: #c8c8c8;
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+    }
+}

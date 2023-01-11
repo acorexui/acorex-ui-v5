@@ -1,0 +1,16 @@
+<input #fileInput type="file" accept="image/*" style="display: none;" (change)="onFileChange($event)" />
+
+<ng-container *ngIf="type == 'inline'; else elseTemplate">
+  <ax-form-group size="{{size}}">
+    <ax-text-box [value]="fileName" readonly="true" [disabled]="disabled"></ax-text-box>
+    <ax-button type="blank light" icon="far fa-times" (click)="remove()" *ngIf="fileName" [tabIndex]="-1">
+    </ax-button>
+    <ax-button type="primary blank" icon="far fa-upload" (click)="open()" [disabled]="disabled" [tabIndex]="-1">
+    </ax-button>
+  </ax-form-group>
+</ng-container>
+
+<ng-template #elseTemplate>
+  <div class="ax upload-file-box" (click)="open()" #dropRef>
+  </div>
+</ng-template>

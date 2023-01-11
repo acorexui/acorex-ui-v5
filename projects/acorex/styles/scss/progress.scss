@@ -1,0 +1,11 @@
+.ax{
+    &.progress {
+        background: var(--ax-light-light-color);
+        margin: 0.2em 0;
+        .progress-bar {
+            background: var(--ax-primary-color);
+            color: var(--ax-primary-fore-color);
+            padding: 0.2em 0;
+        }
+    }
+}

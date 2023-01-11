@@ -1,0 +1,32 @@
+<div class="ax form-item" [class.disabled]="disabled" [attr.id]="uid" #fc>
+    <div class="ax items-wrapper">
+        <ng-content select="[start]">
+        </ng-content>
+        <ax-button icon="far fa-plus" type="success blank" (click)="upStepHandel()" [disabled]="disabled" *ngIf="showDoubleCounter"></ax-button>
+    </div>
+    <div class="content" #content>
+        <div class="ax form-control input {{size}}" [class.disabled]="disabled" [class.readonly]="readonly"
+            [class.icon]="icon">
+            <input [autocomplete]="autocomplete" [name]="name" #input type="text" class="ax {{size}}" [maxlength]="calcSeparator(maxLength)" [(ngModel)]="textValue" placeholder="{{placeholder}}"
+                [readonly]="readonly" [disabled]="disabled" [ngClass]="setTextAlign()"
+                [class.clear]="value && allowClear" (focus)="handleInputFocus($event)" (blur)="handleInputBlur($event)"
+                (keypress)="handleKeyPress($event)" (ngModelChange)="this.userQuestionUpdate.next($event)"
+                (keydown)="handleKeyDown($event)" (click)="handleClick()" (keyup)="handleKeyUp($event)">
+            <i class="{{icon}}" *ngIf="icon"></i>
+        </div>
+    </div>
+    <div class="ax items-wrapper">
+        <ax-button *ngIf="value && allowClear" [disabled]="disabled" icon="far fa-times" type="danger blank"
+            (click)="clear()"></ax-button>
+            <ax-button icon="far fa-minus" type="danger blank" (click)="downStepHandel()" [disabled]="disabled" *ngIf="showDoubleCounter"></ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+        <div class="arrow-number" *ngIf="showCounter && !showDoubleCounter && !readonly" >
+            <ax-button type="light blank" [disabled]="disabled" icon="fas fa-angle-up" [size]="size"
+                (mousedown)="upStepHandel()" (mouseup)="delaySearch()" [tabIndex]="-1"></ax-button>
+            <ax-button type="light blank" [disabled]="disabled" icon="fas fa-angle-down" [size]="size"
+                (mousedown)="downStepHandel()" (mouseup)="delaySearch()" [tabIndex]="-1"></ax-button>
+        </div>
+    </div>
+
+</div>

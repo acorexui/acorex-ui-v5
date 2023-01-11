@@ -1,0 +1,7 @@
+<div class="widgets-container" [class.rtl]="rtl" #container>
+    <ax-widget-host *ngFor="let w of widgets;trackBy: trackByFn"  [config]='w' [sizeX]="w.sizeX" [readonly]="readonly || w.readonly"
+        [sizeY]="w.sizeY" [col]="w.col" [row]="w.row" (onRemove)="handleOnRemove($event)" (onSave)="handleOnSave($event)"
+        (onConfigChanged)="handleOnConfigChanged($event)" (onResized)="handleOnResizedChanged($event)"
+        [provideValue]="provideValue">
+    </ax-widget-host>
+</div>

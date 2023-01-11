@@ -1,0 +1,117 @@
+// filter
+.ag-menu {
+    border-color: var(--border-color);
+    resize: none;
+}
+
+// ax-data-grid .ax-toolbar {
+//     background: transparent !important;
+//     box-shadow: none !important;
+//     border: 0 !important;
+//     padding: 0rem !important;
+// }
+
+.ax-grid-filter-container {
+    min-width: 140px;
+    margin: var(--sp-sm-size);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    legend {
+        font-size: inherit !important;
+    }
+    .btn-group {
+        width: 100%;
+        margin: var(--sp-md-size) 0 0 0;
+    }
+    .ax-field-set {
+        min-width: 200px !important;
+    }
+}
+
+// grid
+ag-grid-angular {
+    width: 100%;
+}
+
+.ag-theme-balham {
+    .ax-field-set-button {
+        margin: 4px 2px !important;
+    }
+    .ag-header {
+        background-color: var(--ax-primary-trans-light-color) !important;
+        border-color: var(--ax-border-color);
+    }
+    .ag-root {
+        border-color: var(--ax-border-color) !important;
+    }
+    .ag-cell {
+        ax-check-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .checkmark {
+                height: 16px;
+                width: 16px;
+            }
+        }
+        ax-button {
+            .ax-button {
+                display: inline-flex;
+                margin: 4px 0px 0 5px;
+            }
+            .btn {
+                padding: 0 0.75rem;
+                font-size: 0.875rem;
+                line-height: 1.2;
+            }
+        }
+    }
+}
+
+.ag-theme-balham .ag-filter input[type="text"],
+.ag-theme-balham .ag-filter input[type="date"] {
+    padding-left: 0.5em !important;
+}
+
+.ax-grid-command-button {
+    border: none;
+    width: var(--el-md-size);
+    height: var(--el-md-size);
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 0.875rem;
+    align-items: center;
+}
+
+ax-command-cell {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+:host {
+    ax-toolbar {
+        width: 100%;
+        .ax-toolbar {
+            background: var(--ax-white-color);
+            padding: 0.5rem;
+            z-index: 2;
+            width: 100%;
+            border: 1px solid var(--ax-border-color);
+            border-bottom: 0;
+            button {
+                i {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+.ag-theme-alpine div.ag-row {
+    font-size: 0.875rem !important;
+}

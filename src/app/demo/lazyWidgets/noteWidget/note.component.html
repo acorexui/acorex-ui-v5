@@ -1,0 +1,39 @@
+<div class="color-container" *ngIf="showNote">
+    <div class="color-box">
+        <div *ngFor="let color of colors" (click)="handleShowNote(color)" #color class="colors"
+            [ngStyle]="{'background-color': color}"></div>
+    </div>
+</div>
+
+<div *ngIf="!showNote" style="height: 100%;">
+    <!-- <div class="col-box">
+        <div #color *ngFor="let color of colors" (click)="handleShowNote(color)" class="cols"
+            [ngStyle]="{'background-color': color}">
+        </div>
+    </div> -->
+    <div #contentContainer class="content-container" [ngStyle]="{'background-color': noteBackgroundColor}">
+        <div #note class="content" contenteditable="true" id="1">
+            {{notes[0].content}}
+        </div>
+    </div>
+    <div class="btn-container">
+        <div class="btn">
+            <ax-button [block]="true" type="blank success" (click)="saveNote()">save</ax-button>
+        </div>
+        <div class="btn">
+            <ax-button [block]="true" type="blank primary" (click)="addNote()">add</ax-button>
+        </div>
+        <div class="btn">
+            <ax-button [block]="true" type="blank info" (click)="loadNote()">load</ax-button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container">
+    <div class="back-ground"></div>
+    <div #note class="content" contenteditable="true" id="1">
+        {{notes[0].content}}
+    </div>
+</div> -->

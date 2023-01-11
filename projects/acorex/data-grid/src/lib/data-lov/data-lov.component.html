@@ -1,0 +1,61 @@
+<ax-select-box [rowInputTemplate]="rowTemplate" [rtl]="rtl" [allowSearch]="allowSearch" #selectBox [showDropDownButton]="false" [allowNull]="allowNull"
+    [remoteOperation]="true" [placeholder]="placeholder" [size]="size" [textField]="textField" [valueField]="valueField"
+    [disabled]="disabled" [mode]="mode" [(selectedItems)]="selectedItems"
+    (selectionChanged)="handleSelectChange($event)" [dataSource]="dataSource">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container end>
+        <ax-button icon="far fa-bars icon" [disabled]="disabled" type="light blank" (click)="handleButtonClick()" end
+            [tabIndex]="-1">
+        </ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+</ax-select-box>
+
+
+<!-- <ax-select-box2 [rtl]="rtl" [allowSearch]="allowSearch" #selectBox [showDropDownButton]="false" [allowNull]="allowNull"
+    [remoteOperation]="true" [placeholder]="placeholder" [size]="size" [textField]="textField" [valueField]="valueField"
+    [disabled]="disabled" [selectionMode]="mode" (onValueChanged)="handleSelectChange($event)" [dataSource]="dataSource"
+    [(value)]="selectedItems" selectionDataMode="item">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container end>
+        <ax-button icon="far fa-bars icon" [disabled]="disabled" type="primary blank" (click)="handleButtonClick()" end
+            [tabIndex]="-1">
+        </ax-button>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+</ax-select-box2> -->
+
+
+<!-- <div class="ax-lov-box" [style.display]="mode=='hidden' ? 'none':'unset'">
+    <div class="ax-field-set">
+        <div class="ax-field-set-wrapper" [ngClass]="{ 'no-label': !label }">
+            <fieldset [ngClass]="{ 'input-focused': isFocused, 'input-error': errorText }">
+                <legend *ngIf="label">
+                    {{ label }}
+                </legend>
+            </fieldset>
+            <input type="text" [(ngModel)]="text" [placeholder]="placeholder" (keyup)="handleKeyEvent($event)"
+                (blur)="handleBlurEvent($event)" (focus)="handleFocusEvent($event)" class="ax-text-box" disabled />
+            <div class="ax-field-set-button">
+                <button *ngIf="text && allowClear" type="button" class="btn btn-light" (click)="clearText()">
+                    <i class="far fa-times"></i>
+                </button>
+                <button type="button" class=" btn btn-primary" (click)="handleButtonClick($event)">
+                    <i class="far fa-check-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="validation-text" *ngIf="errorText">
+        {{ errorText }}
+    </div>
+
+</div> -->

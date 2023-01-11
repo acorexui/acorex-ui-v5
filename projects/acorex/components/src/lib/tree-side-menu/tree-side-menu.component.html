@@ -1,0 +1,43 @@
+<ul class="ax-tree-side-menu {{size}} {{cssClass}}">
+  <ng-template #recursiveList let-list>
+    <ng-container *ngFor="let item of list">
+      <li (click)="handleOnNodeClick($event,item,true)"
+        class="{{item[hasChildField] ? '':'node'}} {{!!item.toggle  ? 'active':''}}" style="display: flex;"
+        [class.selected]="item.select">
+        <div class="ax-tree-side-menu-item" (click)="handleOnNodeClick($event,item,true)">
+
+        
+
+          <div (click)="handleOnNodeClick($event,item,true)" (dblclick)="itemdbClick($event,item)">
+            <ng-container *ngIf="nodeTemplate; else elseTemplate">
+              <ng-container *ngTemplateOutlet="nodeTemplate; context:{ $implicit: item }"></ng-container>
+            </ng-container>
+            <ng-template #elseTemplate>
+              {{item[textField]}}
+            </ng-template>
+          </div>
+
+          <div class="start-side" *ngIf="iconStart">
+            <div *ngIf="item[hasChildField]">
+              <i class="{{openIconName}}" *ngIf=" !!item.toggle && !item.loading"></i>
+              <i class="{{closeIconName}}" *ngIf="!item.toggle && !item.loading"></i>
+              <i class="fal fa-spinner fa-spin" *ngIf="item.loading"></i>
+            </div>
+          </div>
+
+          <div class="start-side" *ngIf="!iconStart">
+            <div *ngIf="item[hasChildField]" (click)="handleOnNodeClick($event,item,true)">
+              <i class="{{openIconName}}" *ngIf=" !!item.toggle && !item.loading"></i>
+              <i class="{{closeIconName}}" *ngIf="!item.toggle && !item.loading"></i>
+              <i class="fal fa-spinner fa-spin" *ngIf="item.loading"></i>
+            </div>
+          </div>
+        </div>
+        <ul class="ax-tree-side-menu-child" *ngIf="item.toggle">
+          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: item.childeren }"></ng-container>
+        </ul>
+      </li>
+    </ng-container>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: list }"></ng-container>
+</ul>

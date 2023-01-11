@@ -1,0 +1,17 @@
+<div class="toast-container">
+    <header *ngIf="title" class="ax toast {{ style }}">
+        <div>
+            <i class="{{icon}}"></i>&nbsp; {{ title }}
+        </div>
+        <div *ngIf="closeable" (click)="close()" class="toast-close">
+            <i class="far fa-times"></i>
+        </div>
+    </header>
+    <div class="content ax toast {{ style }}">
+        {{ message }}
+        <div *ngIf="!title && closeable" (click)="close()" class="toast-close">
+            <i class="far fa-times"></i>
+        </div>
+        <div class="toast-progress" [style.animation-duration.ms]="timeOut"></div>
+    </div>
+</div>

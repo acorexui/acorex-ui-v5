@@ -1,0 +1,92 @@
+import { AXGridDataColumn } from './column.component';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ViewContainerRef,
+  ViewChild
+} from '@angular/core';
+import {
+  IFilterParams,
+  RowNode,
+  IDoesFilterPassParams,
+  IAfterGuiAttachedParams
+} from 'ag-grid-community';
+import { IFilterAngularComp } from 'ag-grid-angular';
+import { AXTextBoxComponent } from '@acorex/components';
+
+
+@Component({
+  selector: 'ax-text-column',
+  template: '',
+  providers: [{ provide: AXGridDataColumn, useExisting: AXGridTextColumn }],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AXGridTextColumn extends AXGridDataColumn {
+  constructor() {
+    super();
+  }
+
+  render() {
+    const col = super.render();
+    // if (this.allowFiltering) {
+    //   col.filterFramework = TextFilterRenderer;
+    // }
+    col.filter = 'agTextColumnFilter';
+    return col;
+  }
+}
+
+@Component({
+  template: `
+    <ax-data-grid-filter>
+      <ax-text-box label='Filter' allowClear='true' (textChange)='onChange($event)'>
+      </ax-text-box>
+    </ax-data-grid-filter>
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class TextFilterRenderer implements IFilterAngularComp {
+  public value?: string = null;
+  private params: IFilterParams;
+  private valueGetter: (rowNode: RowNode) => any;
+  @ViewChild(AXTextBoxComponent, { static: true })
+  private input: AXTextBoxComponent;
+
+  agInit(params: IFilterParams): void {
+    this.params = params;
+    this.valueGetter = (params.valueGetter) as any;
+  }
+
+  isFilterActive(): boolean {
+    return this.value !== null && this.value !== undefined;
+  }
+
+  doesFilterPass(params: IDoesFilterPassParams): boolean {
+    return this.value === this.valueGetter(params.node);
+  }
+
+  getModel(): any {
+    return { value: this.value };
+  }
+
+  setModel(model: any): void {
+    ;
+    this.onChange(model ? model.value : null);
+  }
+
+  ngAfterViewInit(params: IAfterGuiAttachedParams): void {
+    window.setTimeout(() => {
+      this.input.focus();
+    });
+  }
+
+  onChange(newValue): void {
+    if (this.value !== newValue) {
+      this.value = newValue;
+      if (this.value === '') {
+        this.value = null;
+      }
+      this.params.filterChangedCallback();
+    }
+  }
+}

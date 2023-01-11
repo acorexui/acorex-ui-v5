@@ -1,0 +1,13 @@
+{
+  "name": "@acorex/components",
+  "version": "4.2.65",
+  "peerDependencies": {
+    "@angular/common": "^13.3.8",
+    "@angular/core": "^13.3.8"
+  },
+  "dependencies": {
+    "@angular/cdk": "^13.3.8",
+    "angular2-text-mask": "^9.0.0",
+    "tslib": "^2.0.0"
+  }
+}

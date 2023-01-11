@@ -1,0 +1,32 @@
+<!-- <div class="widget-title">{{title}}</div>
+<div style="padding: var(--ax-size-sm);height: 100%; margin-top: 3em;">
+    <div class="table-container" style="height: 100%; overflow-y: auto;">
+        <table class="table table-bordered table-striped table-fixed" style="text-align: center;">
+            <thead class="thead-light">
+                <tr>
+                    <ng-container *ngFor="let column of column">
+                        <th scope="col" class="table-striped" [class.table-striped]="!column.rowHeader">
+                            <span *ngIf="!column.rowHeader"> {{column.caption}}</span>
+                        </th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of rows">
+                    <ng-container *ngFor="let column of column">
+                        <th scope="col" *ngIf="column.rowHeader; else rr">
+                            {{row[column.fieldName]}}
+                        </th>
+                        <ng-template #rr>
+                            <td scope="col">
+                                {{row[column.fieldName]}}
+                            </td>
+                        </ng-template>
+                    </ng-container>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+<h1>Sample Test</h1>

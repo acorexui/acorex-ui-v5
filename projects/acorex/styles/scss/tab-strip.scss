@@ -1,0 +1,31 @@
+.tab-strip-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+
+    li {
+        display: inline;
+        padding: 0.5em;
+        border-bottom: 1px solid;
+        border-color: var(--ax-gray-color);
+        margin-inline-end: 0.3em;
+        cursor: pointer;
+        background-color: var(--ax-white-color);
+
+        &.active {
+            border-color: var(--ax-primary-color) !important;
+        }
+        &.disabled {
+           // border-color: var(--ax-gray-color) !important;
+            // background-color: var(--ax-gray-color) !important;
+            // opacity: 0.6;
+            cursor: not-allowed !important;
+        }
+        &:hover{
+            background-color: var(--ax-light-light-color);
+            border-color: transparent;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<!-- <label class="ax checkbox {{size}}" for="{{uid}}" [ngClass]="{ 'disabled': disabled, 'readonly': readonly }"
+  (click)="handleClick($event)">
+  {{ label }}
+  <input #input type="checkbox" id="{{uid}}" [readonly]="readonly" [checked]="value"
+    [disabled]="disabled || readonly" />
+  <span class="checkmark" [ngClass]="{'indeterminate': indeterminate && value == null}"></span>
+
+</label> -->
+
+
+<!-- [(ngModel)]="value" -->
+<!-- (click)="handleClick($event)"  -->
+
+<label class="ax-checkbox-container" for="{{uid}}" [ngClass]="{ 'disabled': disabled, 'readonly': readonly }">
+
+  <input #input class="ax-checkbox" type="checkbox" id="{{uid}}" [readonly]="readonly" [class.checked]="value"
+    [checked]="value" [ngClass]="{'indeterminate': indeterminate && value == null}" (click)="handleClick($event)"
+    [disabled]="disabled || readonly" />
+
+
+  <span>{{ label ? label : '&nbsp;' }}</span>
+</label>

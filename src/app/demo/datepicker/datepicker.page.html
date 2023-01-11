@@ -1,0 +1,57 @@
+<!-- <h1>Date Picker</h1>
+<ax-date-picker [(value)]="value" type="gregorian">
+</ax-date-picker>
+ {{value | dt}}
+
+<h1>Date Picker Sizes</h1>
+<ax-date-picker size="xs" type="gregorian" [value]="value"></ax-date-picker>
+<br> -->
+<!-- <div class="col-sm-3">
+  <ax-date-picker [selectableHoliday]="false" (onValueChanged)="onValueChanged($event)" size="sm" type="jalali"
+    textAlign="left" [(value)]="value">
+  </ax-date-picker>
+</div> -->
+<ax-button (click)="pushSellected()">clear
+</ax-button>
+<div class="row">
+  <div class="col-sm-1">
+    <ax-date-picker [value]="value2" [min]="min" (onValueChanged)="onValueChanged($event)">
+
+    </ax-date-picker>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <ax-date-picker #date [disabled]="false" [value]="value2" type="gregorian" [min]="min" [max]="max"
+      [dayMinMaxResoan]="dayMinMaxResoan" (onValueChanged)="onValueChanged($event)">
+
+    </ax-date-picker>
+  </div>
+</div>
+<div style="position: relative;">
+  <!-- <div style="float: right">
+    <ax-date-picker [showTodayButton]="false" [selectableHoliday]="false" (onValueChanged)="onValueChanged($event)"
+      type="jalali" textAlign="left" [(value)]="value2">
+    </ax-date-picker>
+  </div> [(value)]="value2" -->
+  <!-- <div style="float: left;">
+        <ax-date-picker [(value)]="value2" type="jalali" [min]="min" (onValueChanged)="onValueChanged($event)">
+
+        </ax-date-picker>
+    </div>
+
+    <div style="float: left;">
+        <ax-date-picker [(value)]="value6" [dayStyle]="dayStyle" [min]="min1">
+
+        </ax-date-picker>
+    </div> -->
+</div>
+<!-- <br>
+<ax-date-picker size="md" [value]="value2"></ax-date-picker>
+<br>
+<ax-date-picker size="lg"></ax-date-picker>
+<br>
+<ax-date-picker size="xl"></ax-date-picker>
+<br>
+<ax-date-picker size="xxl"></ax-date-picker>
+<br> -->

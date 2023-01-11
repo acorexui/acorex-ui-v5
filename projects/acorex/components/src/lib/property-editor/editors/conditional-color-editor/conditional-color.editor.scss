@@ -1,0 +1,71 @@
+.range-item {
+    border: 1px solid var(--ax-gray-color);
+    margin-bottom: 5px;
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    .remove-button {
+        color: var(--ax-danger-color);
+        padding: var(--ax-size-sm);
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--ax-danger-trans-light-color);
+        }
+    }
+
+    div {
+        &:first-child {
+            display: flex;
+            align-items: center;
+
+            div {
+                &:first-child {
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 3px;
+                }
+
+                &:last-child {
+
+                    margin-inline-start: 10px;
+                }
+            }
+        }
+
+        &:last-child {
+            display: flex;
+            align-items: center;
+
+            button {
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+
+                i {
+                    color: var(--ax-danger-color);
+                }
+            }
+
+            div {
+                min-width: 40px;
+
+                &.value-text {
+                    color: var(--ax-success-color);
+                }
+
+                &.value {
+                    color: var(--ax-danger-color);
+
+                }
+            }
+
+        }
+    }
+}

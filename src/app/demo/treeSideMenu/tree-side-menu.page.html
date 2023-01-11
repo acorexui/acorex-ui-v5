@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-12">
+    <label>
+      tree side menu
+    </label>
+    <div style="height: 500px; overflow: auto;">
+      <ax-tree-side-menu #treeSideMenu (onItemClick)="onItemClick($event)" cssClass="tree-sidemenu"
+        (selectionChanged)="onSelectionChange($event)" [keyField]="'title'" [hasChildField]="'hasChild'">
+        <ax-data-source [provideData]="provideData">
+        </ax-data-source>
+
+      </ax-tree-side-menu>
+    </div>
+  </div>
+</div>
+
+
+<!-- <ax-tree-side-menu #tree cssClass="tree-sidemenu" (onItemClick)="onItemClick($event)" [keyField]="'id'"
+  [textField]="'text'" openIconName="fas fa-chevron-up" closeIconName="fas fa-chevron-down" [iconStart]="false"
+  [hasChildField]="'isRoot'" [selectionMode]="'single'">
+          <ax-data-source [provideData]="provideData">
+          </ax-data-source>
+  <ng-template let-data>
+    <span [class.active]="data.toggle">
+      <i class="menu-icon ax ax-dashboard"></i>
+      {{data.text}}
+    </span>
+  </ng-template>
+
+</ax-tree-side-menu> -->

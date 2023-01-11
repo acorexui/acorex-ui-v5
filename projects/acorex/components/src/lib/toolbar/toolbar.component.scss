@@ -1,0 +1,9 @@
+ax-toolbar {
+  width: 100%;
+  .ax-toolbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

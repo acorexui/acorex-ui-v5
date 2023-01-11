@@ -1,0 +1,20 @@
+<button (click)="drawer1.toggle()">Start</button>
+<button (click)="drawer2.toggle()">End</button>
+<ax-drawer-container class="ax-fixed">
+    <ax-drawer #drawer1 [location]="'start'" [collapsed]="false" [mode]="'overlay'">
+        <ax-content>
+            <div>Some contents...</div>aas
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+        </ax-content>
+        
+    </ax-drawer>
+    <ax-drawer #drawer2 [location]="'end'" [collapsed]="true" [mode]="'overlay'">
+        <ax-content>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+            <div>Some contents...</div>
+        </ax-content>
+    </ax-drawer>
+  
+</ax-drawer-container>

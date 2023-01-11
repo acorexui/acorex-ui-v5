@@ -1,0 +1,23 @@
+@import "./mixin.scss";
+
+.ax {
+  &.fieldset {
+    border: 1px solid;
+    border-color: var(--ax-border-color);
+    padding: 0.5em;
+    @include ax-border-radius(var(--ax-size-border-radius));
+
+    legend {
+      padding: 0 0.5em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    >.fieldset-content {
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin-block-end: 0.5em;
+    }
+  }
+}

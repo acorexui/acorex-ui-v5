@@ -1,0 +1,36 @@
+.ax {
+    &.nav-tabs {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        padding: 0;
+        border-bottom: 1px solid var(--ax-border-color);
+        li {
+            font-size: 0.875rem;
+            margin-inline-end: 0.5em;
+            padding: 0.5rem 1rem;
+            background: var(--ax-gray-color);
+            cursor: pointer;
+            -webkit-border-top-left-radius: var(--ax-size-border-radius);
+            -webkit-border-top-right-radius: var(--ax-size-border-radius);
+            -moz-border-radius-topleft: var(--ax-size-border-radius);
+            -moz-border-radius-topright: var(--ax-size-border-radius);
+            border-top-left-radius: var(--ax-size-border-radius);
+            border-top-right-radius: var(--ax-size-border-radius);
+            i {
+                margin-inline-end: 0.5em;
+            }
+            &:hover {
+                background: var(--ax-primary-color);
+                color: var(--ax-primary-fore-color);
+                transition: all 0.3s;
+            }
+
+            &.active {
+                background: var(--ax-primary-color);
+                color: var(--ax-primary-fore-color);
+            }
+        }
+    }
+}

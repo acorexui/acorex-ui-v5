@@ -1,0 +1,139 @@
+$color-suffix: color;
+$size-suffix: size;
+$white: #fff;
+$black: #000;
+
+$primary: #3b82f6; // 500
+$primary-dark: #1d4ed8; // 700
+$primary-light: #93c5fd; // 400
+
+$secondary: #ec4899;
+$secondary-dark: #be185d;
+$secondary-light: #f472b6;
+
+$success: #10b981;
+$success-dark: #047857;
+$success-light: #34d399;
+
+$warning: #f59e0b;
+$warning-dark: #d97706;
+$warning-light: #fbbf24;
+
+
+$danger: #ef4444;
+$danger-dark: #b91c1c;
+$danger-light: #f87171;
+
+$info: #8b5cf6;
+$info-dark: #6d28d9;
+$info-light: #a78bfa;
+
+$gray: #cbd5e1; // 300
+$gray-light: #f1f5f9; // 100
+$gray-dark: #94a3b8; // 400
+
+
+$light: #d1d5db; // 300
+$light-light: #f3f4f6; // 100
+$light-dark: #9ca3af; // 400
+
+$dark: #3f3f46;
+$dark-dark: #18181b;
+$dark-light: #71717a;
+
+$shadow: rgba(0, 0, 0, 0.1);
+
+$colors: (
+    "white": $white,
+    "black": $black,
+    "trans-white": transparentize($white, 0.85),
+    "trans-black": transparentize($black, 0.85),
+    "primary": (
+        "": $primary,
+        "fore": $white,
+        "light": $primary-light,
+        "dark": $primary-dark,
+        "trans-dark": transparentize($primary-light, 0.85),
+        "trans-light": transparentize($primary-dark, 0.85),
+    ),
+    "secondary": (
+        "": $secondary,
+        "fore": $white,
+        "light": $secondary-light,
+        "dark": $secondary-dark,
+        "trans-dark": transparentize($secondary-light, 0.85),
+        "trans-light": transparentize($secondary-dark, 0.85),
+    ),
+    "success": (
+        "": $success,
+        "fore": $white,
+        "light": $success-light,
+        "dark": $success-dark,
+        "trans-dark": transparentize($success-light, 0.85),
+        "trans-light": transparentize($success-dark, 0.85),
+    ),
+    "warning": (
+        "": $warning,
+        "fore": #78350f,
+        "light": $warning-light,
+        "dark": $warning-dark,
+        "trans-dark": transparentize($warning-light, 0.85),
+        "trans-light": transparentize($warning-dark, 0.85),
+    ),
+    "danger": (
+        "": $danger,
+        "fore": $white,
+        "light": $danger-light,
+        "dark": $danger-dark,
+        "trans-dark": transparentize($danger-light, 0.85),
+        "trans-light": transparentize($danger-dark, 0.85),
+    ),
+    "info": (
+        "": $info,
+        "fore": $white,
+        "light": $info-light,
+        "dark": $info-dark,
+        "trans-dark": transparentize($info-light, 0.85),
+        "trans-light": transparentize($info-light, 0.85),
+    ),
+    "gray": (
+        "": $gray,
+        "fore": darken($gray, 50%),
+        "light": $gray-light,
+        "dark": $gray-dark,
+        "trans-dark": transparentize($gray-light, 0.85),
+        "trans-light": transparentize($gray-dark, 0.85),
+    ),
+    "light": (
+        "": $light,
+        "fore": darken($light, 80%),
+        "light": $light-light,
+        "dark": $light-dark,
+        "trans-dark": transparentize($light-light, 0.85),
+        "trans-light": transparentize($light-dark, 0.85),
+    ),
+    "dark": (
+        "": $dark,
+        "fore": #f4f4f5,
+        "light": $dark-light,
+        "dark": $dark-dark,
+        "trans-dark": transparentize($dark-light, 0.85),
+        "trans-light": transparentize($dark-dark, 0.85),
+    ),
+);
+$sizes: (
+    "": (
+        xxs: 0.4rem,
+        xs: 0.6rem,
+        sm: 0.8rem,
+        md: 1rem,
+        lg: 1.2rem,
+        xl: 1.4rem,
+        xxl: 1.6rem,
+    ),
+    "border": (
+        width: 1px,
+        radius: 4px,
+        circle: 50px,
+    ),
+);

@@ -1,0 +1,6 @@
+<div style="display: grid;grid-gap: 2%; grid-template-columns: 49% 49%;">
+    <ax-number-box (onValueChanged)="handleMinValueChange($event)" [value]="sizeX" [min]="minX" [max]="maxX">
+    </ax-number-box>
+    <ax-number-box (onValueChanged)="handleMaxValueChange($event)" [value]="sizeY" [min]="minY" [max]="maxY">
+    </ax-number-box>
+</div>

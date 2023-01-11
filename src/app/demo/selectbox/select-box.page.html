@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <ax-label>
+        single Selection with default value
+        <!-- <ax-select-box2 valueField="id" textField="title" [(value)]="value" [selectionMode]="'multiple'"
+              selectionDataMode="item" [remoteOperation]="remoteOperation" (onValueChanged)="selectionChanged($event)">
+              <ax-data-source [provideData]="provideData2">
+              </ax-data-source>
+            </ax-select-box2> -->
+      </ax-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <ax-button (click)="pushSellected()">clear
+      </ax-button>
+      <ax-button (click)="refresh()">refresh
+      </ax-button>
+      <ax-button (click)="selectValue()">selectValue
+      </ax-button>
+    </div>
+    <div class="col-sm-3">
+      <ax-form-group>
+        <ax-label>نام هتل</ax-label>
+        <ax-select-box #select [disabled]="false" (onValueChanged)="selectionChanged($event)"
+          (selectedItemsChange)="selectedItemsChange($event)" (selectionChanged)="selectionChanged2($event)"
+          [textField]="'Name'" [remoteOperation]="false"  [valueField]="'ID'" [(selectedValues)]="selectedValues">
+          <ax-data-source [provideData]="provideData">
+          </ax-data-source>
+        </ax-select-box>
+      </ax-form-group>
+    </div>
+    <div class="col-sm-3">
+      <ax-form-group>
+        <ax-label>نام هتل</ax-label>
+        <ax-select-box [allowNull]="true" [allowSearch]="true" [textField]="'Name'" [valueField]="'ID'" mode="multiple"
+          (selectionChanged)="selectionChanged2($event)" [disabledCallback]="disabledCallback" [remoteOperation]="true"
+          [(selectedValues)]="selectedValues2">
+          <ax-data-source [provideData]="provideData">
+          </ax-data-source>
+        </ax-select-box>
+      </ax-form-group>
+    </div>
+    <div class="col-sm-3">
+      <ax-form-group>
+        <ax-label>شکل دارو</ax-label>
+
+        <ax-select-box [disabled]="false" [fitParent]="false"  placeholder="شکل دارو" textField="Name" valueField="ID"
+           #drugShapeView  remoteOperation="'true'">
+          <ax-data-source [provideData]="provideData"></ax-data-source>
+          <ng-template let-data>
+            <div class="favorite-box">
+              <span>{{data?.Name}}</span>
+              <i [ngStyle]="{'color': data?.favoriteTermId !== null ? 'red':'black'}"
+                (click)="favoriteTermClick($event,data.favoriteTermId,data.termId,'drugShape')"
+                class="far fa-star favorite-icon"></i>
+            </div>
+               
+          </ng-template>    
+        </ax-select-box>
+      </ax-form-group>
+    </div>
+  </div>
+</div>
+
+<!--
+
+<ax-select-box chipsWidth="70px" valueField="id" textField="title" mode="multiple">
+  <ax-data-source [provideData]="provideData2">
+  </ax-data-source>
+</ax-select-box> -->

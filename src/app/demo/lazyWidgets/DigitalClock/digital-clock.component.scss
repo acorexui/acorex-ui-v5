@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* padding-top: 2em;*/
+
+  .d-c-con {
+    border-radius: var(--ax-size-border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .clock-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 9% 10% 10.5% 10%;
+  }
+
+  .date-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4em;
+    font-size: var(--ax-size-md);
+    background-color: var(--ax-gray-trans-light-color);
+    border-radius: var(--ax-size-border-radius);
+  }
+}
+
+.clock {
+  color: var(--ax-black-color);
+  font-size: 41pt;
+  font-family: inherit;
+  letter-spacing: 7px;
+}
+
+.date {
+  letter-spacing: 1px;
+}

@@ -1,0 +1,19 @@
+<div class="ax-panel-box ax {{size}}">
+  <ng-container *ngIf="headerTemplate; else elseTemplate">
+    <header [class.toggle]="allowCollapse">
+      <ng-container *ngTemplateOutlet="headerTemplate">
+      </ng-container>
+    </header>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <header class="ax panel {{type}}" [class.toggle]="allowCollapse" (click)="toggle()">
+      <div [innerHTML]="caption"></div>
+      <div *ngIf="allowCollapse">
+        <i [ngClass]="{ 'far fa-minus-square' : !collapsed ,'fas fa-plus-square' : collapsed }"></i>
+      </div>
+    </header>
+  </ng-template>
+  <div class="content" [@visibilityChanged]="collapsed ? 'hidden' : 'shown'">
+    <ng-content></ng-content>
+  </div>
+</div>

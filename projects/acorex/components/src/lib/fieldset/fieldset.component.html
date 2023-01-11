@@ -1,0 +1,6 @@
+<fieldset class="ax fieldset {{size}}">
+    <legend (click)="toggle()"> {{ caption }} </legend>
+    <div class="fieldset-content" [@visibilityChanged]="collapsed ? 'hidden' : 'shown'">
+        <ng-content></ng-content>
+    </div>
+</fieldset>

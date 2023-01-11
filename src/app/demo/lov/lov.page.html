@@ -1,0 +1,38 @@
+<ax-page>
+  <ax-page-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <ax-lov [pagination]="false" popupSize="full" [allowSearch]="true" [allowNull]="false"
+            [selectedItems]="selectedItems" #lov1 label="Data LOV" [mode]="'single'" [textField]="'name'"
+            [valueField]="'id'" (onSelectionChange)="handleLovSelectionChange($event)">
+            <ax-data-source [provideData]="provide2234">
+            </ax-data-source>
+            <ng-template #itemTemplate let-data>
+              <div style="background-color: red;">
+                data.name
+              </div>
+              <i style="background-color: red;"></i>
+            </ng-template>
+
+            <ax-text-column field="name" caption="name"></ax-text-column>
+            <ax-text-column field="terminologyCode" caption="terminologyCode"></ax-text-column>
+          </ax-lov>
+        </div>
+        <div class="col-sm-6">
+          <!-- <ax-lov [allowNull]="false" [(selectedItems)]="selectedItems2" #lov2 [mode]="'single'"
+            [textField]="'jobTitle'" [valueField]="'id'" [hasChildField]="'hasChild'"
+            (onSelectionChange)="handleLovSelectionChange($event)">
+            <ax-data-source [provideData]="provideData2">
+            </ax-data-source>
+            <ax-text-column treeIndex='0' field="jobTitle" caption="jobTitle"></ax-text-column>
+            <ax-text-column field="employmentType" caption="employmentType"></ax-text-column>
+          </ax-lov> -->
+        </div>
+      </div>
+    </div>
+    <ax-button (click)="clear()" size="sm">
+      clear
+    </ax-button>
+  </ax-page-content>
+</ax-page>

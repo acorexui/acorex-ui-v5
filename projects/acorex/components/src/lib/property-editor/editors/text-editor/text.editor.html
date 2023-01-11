@@ -1,0 +1,5 @@
+<ax-text-box (onValueChanged)="handleValueChange($event)" [value]="value" [readonly]="readonly"
+    [allowClear]="clearButton" [mask]="mask" [maskGuid]="maskGuid" [showMask]="showMask">
+    <ax-validation [rules]="validation?.rules">
+    </ax-validation>
+</ax-text-box>

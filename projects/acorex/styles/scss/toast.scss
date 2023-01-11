@@ -1,0 +1,46 @@
+@import "./variables.scss";
+.ax {
+    &.toast {
+        font-size: 0.875rem;
+       
+        &.info {
+            background-color: var(--ax-info-color);
+            color: var(--ax-info-fore-color);
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: var(--ax-info-color);
+                color: var(--ax-info-fore-color);
+            }
+        }
+
+        &.success {
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: var(--ax-success-color);
+                color: var(--ax-success-fore-color);
+            }
+        }
+
+        &.warning {
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: var(--ax-warning-color);
+                color: var(--ax-warning-fore-color);
+            }
+        }
+
+        &.error {
+            background-color: var(--ax-danger-color);
+            color: var(--ax-danger-fore-color);
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: var(--ax-danger-color);
+                color: var(--ax-danger-fore-color);
+            }
+        }
+    }
+}

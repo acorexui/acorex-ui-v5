@@ -1,0 +1,15 @@
+<div class="ax form-group {{size}}">
+    <ng-content select="ax-label"></ng-content>
+    <div #div class="ax form-item {{size}}" [ngClass]="{'required-state': required}">
+        <div class="ax buttons start-buttons" #startButtons>
+            <ng-content select="ax-button[start]"></ng-content>
+        </div>
+        <div class="content" #content>
+            <ng-content></ng-content>
+        </div>
+        <div class="ax buttons end-buttons" #endButtons>
+            <ng-content select="ax-button[end]"></ng-content>
+            <ng-content select="ax-button"></ng-content>
+        </div>
+    </div>
+</div>

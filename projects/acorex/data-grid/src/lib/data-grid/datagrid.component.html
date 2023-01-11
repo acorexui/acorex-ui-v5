@@ -1,0 +1,27 @@
+<div class="ax-grid-toolbar" *ngIf="toolbar">
+  <ng-content select="ax-toolbar"></ng-content>
+</div>
+<!-- [enableSorting]="true"  [enableColResize]="true" [enableFilter]="allowFiltering"  -->
+<ag-grid-angular *ngIf="gridView" class="ag-theme-balham" [getRowClass]="internalGetRowClass"
+  [style.height]="internalHeight" [columnDefs]="columnDefs" [enableRtl]="rtl" [pagination]="pagination"
+  [rowGroupPanelShow]="rowGroupPanelShow" [rowModelType]="rowModelType" [detailRowHeight]="detailRowHeight"
+  [getRowHeight]="getRowHeight" [paginationAutoPageSize]="paginationAutoPageSize"
+  [paginationPageSize]="paginationPageSize" [suppressMenuHide]="true" [frameworkComponents]="frameworkComponents"
+  [isFullWidthCell]="isFullWidthCell" [rowSelection]="selectionMode" [rowMultiSelectWithClick]="rowMultiSelectWithClick"
+  [fullWidthCellRendererFramework]="fullWidthCellRendererFramework"
+  [fullWidthCellRendererParams]="fullWidthCellRendererParams" (cellClicked)="internalGridCellClicked($event)"
+  (cellDoubleClicked)="internalGridCellDoubleClicked($event)" (cellFocused)="internalGridCellFocused($event)"
+  (rowClicked)="internalGridRowClicked($event)" (selectionChanged)="internalGridSelectionChanged($event)"
+  (rowSelected)="rowSelectionChanged($event)" (rowDoubleClicked)="internalGridRowDoubleClicked($event)"
+  (gridReady)="internalGridReady($event)" [groupSelectsChildren]="groupSelectsChildren"
+  [suppressRowClickSelection]="suppressRowClickSelection" [groupSelectsFiltered]="true"
+  [suppressCellSelection]="suppressCellSelection" [autoGroupColumnDef]="autoGroupColumnDef"
+  [suppressAggFuncInHeader]="true" [treeData]="treeData" [animateRows]="true" [isServerSideGroup]="isServerSideGroup"
+  [getServerSideGroupKey]="getServerSideGroupKey" [masterDetail]="masterDetail"
+  [detailCellRendererParams]="detailCellRendererParams" [detailCellRenderer]="detailCellRenderer"
+  (gridSizeChanged)="internalGridSizeChanged($event)" (firstDataRendered)="internalGridFirstDataRendered($event)"
+  [localeText]="localeText" [groupHideOpenParents]="groupHideOpenParents" [enableRangeSelection]="true"
+  [enableRangeSelection]="false" [allowContextMenuWithControlKey]="false" [getMainMenuItems]="getMainMenuItems">
+</ag-grid-angular>
+
+<!-- (displayedColumnsChanged)="displayedColumnsChanged($event)"  -->

@@ -1,0 +1,78 @@
+<ax-drop-down [size]="size" [rtl]="rtl" [showDropDownButton]="showDropDownButton" [disabled]="disabled"
+    [readonly]="readonly" #d (dropdownToggle)="dropdownToggle($event)" [loading]="showLoading">
+    <ng-container start>
+        <ng-content select="[start]">
+        </ng-content>
+    </ng-container>
+    <ng-container header>
+        <div class="ax chips-container" [horizontalScroll]="40">
+            <div *ngFor="let item of selectedItems" class="chips" [class.chips-blank]="selectionMode === 'single'"
+                [title]="item[textField]">
+                <span class="chips-text">
+                    {{item[textField]}}
+                </span>
+                <span class="close-icon" (click)="handleItemRemoveClick(item)"
+                    *ngIf="(readonly!=true) && disabled!=true && (allowNull==true || (selectedItems.length > 1))">
+                    <i class="far fa-times close"></i>
+                </span>
+            </div>
+            <div class="search-wrapper" (click)="onTextBoxClick($event)">
+                <ax-text-box #textBoxSelectBox [textAlign]="textAlign"
+                    [placeholder]="selectedItems.length == 0 ? placeholder : ''" [readonly]="readonly"
+                    [disabled]="disabled"  [size]="size">
+                </ax-text-box>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container end>
+        <ng-content select="[end]">
+        </ng-content>
+    </ng-container>
+    <ng-container panel>
+        <div *ngIf="allowSearch" class="search-wrapper" style="padding: 0.7em;">
+            <ax-search-box #searchBox [(value)]="text" size="sm"
+                (textChanged)="textChanged($event)" (onButtonClick)="textChanged($event)">
+            </ax-search-box>
+        </div>
+        <div class="ax list-container">
+            <div #listContainer style="max-height: 300px;overflow-y: auto;width: 100%;" (scroll)="scrolled($event)">
+                <ng-container *ngIf="getItems().length>0; then thenTemplate; else elseTemplate"></ng-container>
+                <ng-template #thenTemplate>
+                    <div class="list-item" *ngFor="let item of getItems();let i = index"
+                        [class.focused]="i==currentfocusedIndex" (click)="handleItemClick($event,item)"
+                        [class.selected]="isItemSelected(item)">
+                        <div>
+                            <div>
+                                <ax-check-box *ngIf="selectionMode !== 'single'" [size]="size" [value]="isItemSelected(item)"
+                                    [disabled]="!allowNull && selectedItems.length === 1 && isItemSelected(item)"
+                                    (onClick)="handleItemClick($event,item)">
+                                </ax-check-box>
+                            </div>
+                            <div style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"
+                                [title]="item[textField]"
+                                [ngStyle]="(selectionMode !== 'single') ? {'padding-inline-start': '2em'}:''">
+                                {{ item[textField] }}
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+                <div *ngIf="showLoading" class="ax-pad-sm" style="text-align: center;">
+                    <i class="far fa-spinner-third fa-pulse fa-2x" style="color: var(--ax-primary-color);"></i>
+                </div>
+                <ng-template #elseTemplate>
+                    <ng-container *ngIf="showLoading == true; then searchTemplate else noDataTemplate"></ng-container>
+                    <ng-template #searchTemplate>
+                        <div class="list-item">
+                            {{'common.searching' | trans}}
+                        </div>
+                    </ng-template>
+                    <ng-template #noDataTemplate>
+                        <div class="list-item">
+                            {{'common.noDataFound' | trans}}
+                        </div>
+                    </ng-template>
+                </ng-template>
+            </div>
+        </div>
+    </ng-container>
+</ax-drop-down>

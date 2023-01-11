@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-sm-2">
+        <ax-button (click)="selectAllClick()">select All
+        </ax-button>
+    </div>
+    <div class="col-sm-2">
+        <ax-button (click)="UnselectAllClick()"> Unselect All
+        </ax-button>
+    </div>
+    <div class="col-sm-2">
+        <ax-button (click)="openAllClickWithLoad()"> open All Whith Load All
+        </ax-button>
+    </div>
+    <div class="col-sm-2">
+
+        <ax-button (click)="openAllClickNoLoad()"> open All No Load
+        </ax-button>
+    </div>
+    <div class="col-sm-2">
+
+        <ax-button (click)="closeAllClick()"> close All
+        </ax-button>
+    </div>
+    <div class="col-sm-1">
+
+        <ax-button (click)="getNodesClick()"> get nodes
+        </ax-button>
+    </div>
+    <div class="col-sm-1">
+
+        <ax-button (click)="getselectedKeyClick()"> get selected Key Fields
+        </ax-button>
+    </div>
+
+    <div class="col-sm-1">
+
+        <ax-button (click)="pushSellected()">push
+        </ax-button>
+    </div>
+
+    <div class="col-sm-1">
+
+        <ax-button (click)="getSelectedChild()">getSelectedChild
+        </ax-button>
+    </div>
+
+    <div class="col-sm-1">
+
+        <ax-button (click)="getSelectedParent()">getSelectedParent
+        </ax-button>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-12">
+        <label>
+            tree view with Lazy Load
+        </label>
+        <div style="height: 500px; overflow: auto;">
+            <ax-tree-view [checkParents]="true" [checkChilds]="true" [seletedKeyFields]="selectedItem"
+                [selectionLevel]="'all'" [selectableField]="disableCheckBox" selectionMode="multiple"
+                [contextMenuItems]="provideCMList" size="sm" #treeView [bordered]="true"
+                (onItemOpening)="onItemOpening($event)" (onItemClick)="onItemClick($event)"
+                (onContextMenuItemClick)="onContextMenuItemClick($event)"
+                (selectionChanged)="onSelectionChange2($event)"
+                (seletedKeyFieldsChanged)="seletedKeyFieldsChanged($event)" (onItemClosing)="onItemClosing($event)"
+                [keyField]="'title'" [hasChildField]="'hasChild'" (onItemDrag)="onItemDrag($event)"
+                (onItemMoved)="onItemMoved($event)" allowDrag="true">
+                <ax-data-source [provideData]="provideData">
+                </ax-data-source>
+                <ng-template let-data>
+                    <span *ngIf="!data.hasChild"></span> {{data.title}}
+                </ng-template>
+            </ax-tree-view>
+        </div>
+    </div>
+</div>
+
+<!--
+<label>
+    tree view with border
+</label>
+<ax-tree-view [lazyLoading]="false" [selectionMode]="'multiple'" bordered="true"
+    (onSelectionChange)="onSelectionChange($event)" [keyField]="'title'" [hasChildField]="'hasChild'"
+    [ChildField]="'childeren'">
+    <ax-data-source [provideData]="provideData2">
+    </ax-data-source>
+</ax-tree-view> -->

@@ -1,0 +1,13 @@
+{
+  "name": "@acorex/core",
+  "version": "4.2.65",
+  "peerDependencies": {
+    "@angular/common": "^13.3.8",
+    "@angular/core": "^13.3.8",
+    "rxjs": "~6.5.4"
+  },
+  "dependencies": {
+    "jalali-moment": "3.3.3",
+    "tslib": "^2.0.0"
+  }
+}

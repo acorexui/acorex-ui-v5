@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-3">
+    <ax-select-box size="md" textField="title" valueField="id" groupField="category"
+      (selectedItemsChange)="handleSelectChange($event)" [selectedValues]="selectedValues">
+      <ax-data-source [provideData]="handleDataReceived">
+      </ax-data-source>
+      <ax-button icon="far fa-plus"></ax-button>
+    </ax-select-box>
+  </div>
+</div>

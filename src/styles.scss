@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import '../projects/acorex/styles/fonts/font-awesome/font-awesome.css';
+@import '../projects/acorex/styles/scss/style.scss';
+@import '../projects/acorex/styles/scss/data-grid.scss';
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
+@import '~@angular/cdk/overlay-prebuilt.css';
+html,
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+        font-family: Vazirmatn;
+        font-weight: 400;
+    
+}
+
+.ax-page-content {
+    height: calc(100% - 40px);
+}
+
+
+.test-item {
+    border: 1px solid #ccc;
+    width: 200px;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+    &.sm {
+        height: 27px;
+    }
+    &.md {
+        height: 36px;
+    }
+    &.lg {
+        height: 50px;
+    }
+}

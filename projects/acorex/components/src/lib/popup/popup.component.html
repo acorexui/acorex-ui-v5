@@ -1,0 +1,33 @@
+<div class="popup-wrapper" role="dialog" [attr.aria-labelledby]="'dialog'+uid+'_label'" aria-modal="true" cdkTrapFocus>
+  <div class="popup-container {{size}}" tabindex="0" cdkDrag [class.has-border]="!modal">
+    <div class="ax-popup-header" cdkDragHandle [attr.id]="'dialog'+uid+'_label'">
+      <span>
+        {{title}}
+      </span>
+      <span class="ax-buttons-containers">
+        <i class="far fa-expand ax-popup-header-button" (click)="onFullScreen()" *ngIf="maximizable" tabindex="2"
+          title="تمام صفحه"></i>
+        <i class="far fa-times ax-popup-header-button" (click)="onCloseClick()" *ngIf="closable" tabindex="1"
+          title="بستن"></i>
+      </span>
+    </div>
+    <div class="ax-popup-body ax-loading-host">
+      <div class="ax-popup-body-container">
+        <div [hidden]="isLoading">
+          <ng-template #popupBody></ng-template>
+        </div>
+      </div>
+      <div class="ax-popup-footer" *ngIf="!isLoading && footerButtons.length > 0">
+        <div class="ax-buttons-containers">
+          <ng-container *ngFor="let button of footerButtons">
+            <ax-button [type]="button.style" [icon]="button.icon" [submitBehavior]="button.submitBehavior"
+              [disabled]="button.disable" [cancelBehavior]="button.cancelBehavior"
+              (click)="handleFooterButtonClick(button)">
+              {{button.text}}
+            </ax-button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

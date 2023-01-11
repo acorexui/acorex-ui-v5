@@ -1,0 +1,59 @@
+.ax {
+    &.ax-menu {
+        display: flex;
+        &.ax-menu-vertical {
+            &[data-level="0"] {
+                display: flex;
+                flex-direction: row;
+            }
+            &:not([data-level="0"]) {
+                display: flex;
+                transition: opacity .3s;
+                min-width: 12em;
+                box-shadow: 0 1px 7px 0 var(--ax-border-color);
+                background: #fff;
+                flex-direction: column;
+            }
+            .ax-menu-item {
+                display: flex;
+                white-space: nowrap;
+                cursor: pointer;
+                padding: 0 10px;
+                font-weight: normal;
+                font-size: 0.875rem;
+                line-height: 40px;
+                text-decoration: none;
+                align-items: center;
+                .icon {
+                    &:first-child {
+                        margin-inline-end: var(--ax-size-md);
+                    }
+                    &:last-child {
+                        margin-inline-start: var(--ax-size-md);
+                    }
+                }
+                span {
+                    flex: 1;
+                }
+                &.disabled {
+                    opacity: 0.6;
+                }
+                // &.disabled {
+                //     // color: var(--ax-gray-color) !important;
+                //     // background-color: var(--ax-gray-trans-light-color) !important;
+                //     opacity: 0.6;
+                //     cursor: not-allowed !important;
+                //     .icon {
+                //         color: var(--ax-gray-dark-color) !important;
+                //     }
+                //     &:hover {
+                //         // background: var(--ax-light-light-color) !important;
+                //         // border-color: var(--ax-light-light-color) !important;
+                //         // color: var(--ax-gray-dark-color) !important;
+                //         cursor: not-allowed !important;
+                //     }
+                // }
+            }
+        }
+    }
+}
