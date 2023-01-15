@@ -1,8 +1,8 @@
 import { AXConfig, AXDateTime } from '@acorex/core';
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import * as _ from 'lodash';
 import { AXElementSize } from '../base/element.class';
-import { AXDropdownComponent } from '../dropdown/dropdown.component';
+import { AXPopoverComponent } from '../popover/popover.component';
 import { AXPropertyEditorRendererDirective } from '../property-editor/property-editor-renderer.directive';
 import { AXPropertyColDef, AXPropertyConfig, AXProperyEditorValueChangeEvent, FilterModel } from '../property-editor/property-editor.class';
 import { AXValidationFormComponent } from '../validation/validation-form.component';
@@ -22,9 +22,10 @@ export interface FilterTextItemsModel {
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class AXSearchBarComponent implements OnInit {
-  constructor(private ref: ElementRef<HTMLDivElement>, private cdr: ChangeDetectorRef) {}
-  @ViewChild('dropdown', { static: true }) dropdown: AXDropdownComponent;
+export class AXSearchBarComponent {
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  @ViewChild('searchPop') searchPopover: AXPopoverComponent;
   @ViewChildren(AXPropertyEditorRendererDirective) _editors: QueryList<AXPropertyEditorRendererDirective>;
   @ViewChild(AXValidationFormComponent) form: AXValidationFormComponent;
 
@@ -38,7 +39,7 @@ export class AXSearchBarComponent implements OnInit {
   fitParent: boolean = false;
 
   @Input()
-  dropdownWidth: string = '600px';
+  popoverWidth: string = '60%';
 
   @Input()
   rtl: boolean = AXConfig.get('layout.rtl');
@@ -93,7 +94,7 @@ export class AXSearchBarComponent implements OnInit {
   }
 
   handleButtonClick() {
-    this.dropdown.toggle();
+    this.searchPopover.open();
   }
 
   async handleValueChange(e: AXProperyEditorValueChangeEvent) {
@@ -114,7 +115,7 @@ export class AXSearchBarComponent implements OnInit {
     this.form.validate().then((c) => {
       if (c.result) {
         this._filterItems = JSON.parse(JSON.stringify(this._filterItemsClone.filter((el) => el.value != null && el.value != '')));
-        this.handleButtonClick();
+        this.searchPopover.close();
         this.onSearchValue.emit(this._filterItems);
       }
     });
@@ -126,7 +127,7 @@ export class AXSearchBarComponent implements OnInit {
     });
     this._filterItems = [];
     this._filterItemsClone = [];
-    this.handleButtonClick();
+    this.searchPopover.close();
     this.onSearchValue.emit(this._filterItems);
   }
 
@@ -169,15 +170,6 @@ export class AXSearchBarComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      if (!this.dropdown.dropdownWidth) {
-        this.dropdown.dropdownWidth = '600px';
-      }
-    });
-  }
   private _handleTextValue(dataItem: any) {
     let text = '';
     if (Array.isArray(dataItem.value)) {

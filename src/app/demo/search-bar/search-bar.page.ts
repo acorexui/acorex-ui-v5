@@ -9,6 +9,8 @@ export class SearchBarPage implements AfterViewInit {
   ngAfterViewInit(): void {
     this.items[4].value = [{ text: 'مرد', value: 1 }];
     this.items[this.items.length - 1].value = [{ text: 'زن', value: 2 }];
+
+    this.searchBar.refresh();
   }
 
   @ViewChild('searchBar') searchBar: AXSearchBarComponent;
