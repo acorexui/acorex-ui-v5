@@ -23,14 +23,17 @@ export interface FilterTextItemsModel {
   styleUrls: ['./search-bar.component.scss']
 })
 export class AXSearchBarComponent {
-  constructor(private cdr: ChangeDetectorRef,public ref:ElementRef<HTMLDivElement>) {}
+  constructor(private cdr: ChangeDetectorRef, public ref: ElementRef<HTMLDivElement>) {}
 
   @ViewChild('searchPop') searchPopover: AXPopoverComponent;
   @ViewChildren(AXPropertyEditorRendererDirective) _editors: QueryList<AXPropertyEditorRendererDirective>;
   @ViewChild(AXValidationFormComponent) form: AXValidationFormComponent;
 
   @Input()
-  size: AXElementSize = 'md';
+  sizeButton: AXElementSize = 'md';
+
+  @Input()
+  size: 'sm' | 'md' | 'lg' | 'full' = 'full';
 
   @Input()
   disabled: boolean = false;

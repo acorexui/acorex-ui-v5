@@ -7,6 +7,88 @@
         align-items: center;
         gap: 0.5rem;
     }
+
+    &.sm {
+        width: 30vw;
+    }
+
+    &.md {
+        width: 50vw;
+    }
+
+    &.lg {
+        width: 70vw;
+    }
+
+    &.full {
+        width: 90vw;
+    }
+
+    @media all and (min-width: 1280px) {
+        &.sm {
+            width: 420px !important;
+        }
+
+        &.md {
+            width: 680px !important;
+        }
+
+        &.lg {
+            width: 1024px !important;
+        }
+    }
+
+    @media all and (min-width: 1024px) and (max-width: 1279px) {
+        &.sm {
+            width: 100vw;
+            max-height: 100vh;
+        }
+
+        &.md {
+            width: 500px !important;
+        }
+
+        &.lg {
+            width: 900px !important;
+        }
+    }
+
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+        &.sm {
+            width: 100vw;
+            max-height: 100vh;
+        }
+
+        &.md {
+            width: 500px !important;
+        }
+
+        &.lg {
+            width: 700px !important;
+        }
+    }
+
+    @media all and (min-width: 425px) and (max-width: 767px) {
+        &.sm {
+            width: 100vw;
+            max-height: 100vh;
+        }
+
+        &.md,
+        &.lg {
+            width: 460px !important;
+        }
+    }
+
+    @media all and (min-width: 0px) and (max-width: 424px) {
+
+        &.sm,
+        &.md,
+        &.lg {
+            width: 100vw;
+            max-height: 100vh;
+        }
+    }
 }
 
 .search-count {

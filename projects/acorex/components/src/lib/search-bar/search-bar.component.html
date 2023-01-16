@@ -1,12 +1,12 @@
 <ax-button end icon="far fa-sliders-h icon" [selected]="_filterItems.length ? true:false"
-    [type]=" _filterItems.length ? 'primary':'primary outline'" [disabled]="disabled" [size]="size" [tabIndex]="-1"
-    (click)="handleButtonClick()"> {{'common.search' | trans}} <span *ngIf="_filterItems.length"
+    [type]=" _filterItems.length ? 'primary':'primary outline'" [disabled]="disabled" [size]="sizeButton"
+    [tabIndex]="-1" (click)="handleButtonClick()"> {{'common.search' | trans}} <span *ngIf="_filterItems.length"
         class="search-count">{{_filterItems.length}}</span></ax-button>
 
 
 <ax-popover #searchPop [target]="ref" [rtl]="rtl"
     [position]="{originX:'start',originY:'bottom',overlayX:'start',overlayY:'top',offsetY:10}">
-    <div class="panel-box ax-dropdown-container-bordered" [ngStyle]="{'width' : popoverWidth }">
+    <div class="panel-box ax-dropdown-container-bordered {{size}}">
         <ax-validation-form #form>
             <ng-container *ngFor="let item of _items">
                 <div class="row">
