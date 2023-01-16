@@ -1,23 +1,22 @@
 import { Component, Input, NgZone, ChangeDetectorRef, ChangeDetectionStrategy, ViewEncapsulation, ViewChild, TemplateRef } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { AXOverlayService, AXOverlayViewRef } from './overlay.service';
-import { AXConnectedPosition } from '@acorex/core';
-
+import { AXConfig, AXConnectedPosition } from '@acorex/core';
 
 @Component({
   selector: 'ax-popover',
   templateUrl: './popover.component.html',
   styleUrls: ['./popover.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AXPopoverComponent {
   constructor(
     private overlayService: AXOverlayService,
     private zone: NgZone,
-    private cdr: ChangeDetectorRef) {
-
-  }
+    private ref: ElementRef<HTMLDivElement>,
+    private cdr: ChangeDetectorRef
+  ) {}
   //
   private targetEl: HTMLElement;
   private overlay: AXOverlayViewRef;
@@ -32,6 +31,9 @@ export class AXPopoverComponent {
   //
   @Input('closeMode') closeMode: 'manual' | 'clickout' | 'mouseout' = 'clickout';
   //
+  @Input()
+  rtl: boolean = AXConfig.get('layout.rtl');
+
   private _visible: boolean = false;
   @Input()
   public get visible(): boolean {
@@ -69,20 +71,31 @@ export class AXPopoverComponent {
     if (this.isOpen) {
       return;
     }
-    this.overlay = this.overlayService.show(this.template, {}, {
-      closeOnClickOutside: this.closeMode === 'clickout',
-      targetElement: this.targetEl,
-      hasBackdrop: this.closeMode === 'clickout',
-      position: this.position,
-      onBackdropClick: () => {
-        this._visible = false;
+    this.overlay = this.overlayService.show(
+      this.template,
+      {},
+      {
+        closeOnClickOutside: this.closeMode === 'clickout',
+        targetElement: this.targetEl,
+        hasBackdrop: this.closeMode === 'clickout',
+        position: this.position,
+        direction: this.rtl ? 'rtl' : 'ltr',
+        onBackdropClick: () => {
+          this._visible = false;
+        }
       }
-    });
+    );
   }
 
   private internalHide() {
     if (this.overlay) {
       this.overlay.dispose();
+    }
+  }
+
+  ngOnInit(): void {
+    if (this.rtl == null) {
+      this.rtl = window.getComputedStyle(this.ref.nativeElement, null).getPropertyValue('direction') === 'rtl';
     }
   }
 

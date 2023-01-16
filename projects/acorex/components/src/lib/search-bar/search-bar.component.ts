@@ -1,5 +1,5 @@
 import { AXConfig, AXDateTime } from '@acorex/core';
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import * as _ from 'lodash';
 import { AXElementSize } from '../base/element.class';
 import { AXPopoverComponent } from '../popover/popover.component';
@@ -23,7 +23,7 @@ export interface FilterTextItemsModel {
   styleUrls: ['./search-bar.component.scss']
 })
 export class AXSearchBarComponent {
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef,public ref:ElementRef<HTMLDivElement>) {}
 
   @ViewChild('searchPop') searchPopover: AXPopoverComponent;
   @ViewChildren(AXPropertyEditorRendererDirective) _editors: QueryList<AXPropertyEditorRendererDirective>;
@@ -39,7 +39,7 @@ export class AXSearchBarComponent {
   fitParent: boolean = false;
 
   @Input()
-  popoverWidth: string = '60%';
+  popoverWidth: string = '65vw';
 
   @Input()
   rtl: boolean = AXConfig.get('layout.rtl');
@@ -82,6 +82,12 @@ export class AXSearchBarComponent {
   _isEmitted: boolean = false;
   public clearItem(name: string) {
     this._editors.find((x) => x.property.property.name === name).clear();
+  }
+
+  ngOnInit(): void {
+    if (this.rtl == null) {
+      this.rtl = window.getComputedStyle(this.ref.nativeElement, null).getPropertyValue('direction') === 'rtl';
+    }
   }
 
   public refresh() {
