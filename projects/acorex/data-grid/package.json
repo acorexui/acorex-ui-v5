@@ -1,6 +1,6 @@
 {
   "name": "@acorex/data-grid",
-  "version": "5.1.8",
+  "version": "5.1.9",
   "peerDependencies": {
     "@angular/common": "^13.3.8",
     "@angular/core": "^13.3.8",
