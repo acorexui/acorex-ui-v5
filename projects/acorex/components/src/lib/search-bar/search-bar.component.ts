@@ -33,7 +33,7 @@ export class AXSearchBarComponent {
   sizeButton: AXElementSize = 'md';
 
   @Input()
-  size: 'sm' | 'md' | 'lg' | 'full' = 'full';
+  size: 'sm' | 'md' | 'lg' | 'full' = 'sm';
 
   @Input()
   disabled: boolean = false;
