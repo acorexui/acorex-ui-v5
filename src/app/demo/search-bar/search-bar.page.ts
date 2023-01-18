@@ -1,19 +1,19 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AXPropertyConfig, AXProperyEditorValueChangeEvent, AXSearchBarComponent } from '@acorex/components';
 import { AXDateTime } from '@acorex/core';
 @Component({
   templateUrl: './search-bar.page.html'
 })
 export class SearchBarPage implements AfterViewInit {
-  constructor() {}
+  constructor(private cdr: ChangeDetectorRef) {}
   ngAfterViewInit(): void {
     this.items[4].value = [{ text: 'مرد', value: 1 }];
     this.items[this.items.length - 1].value = [{ text: 'زن', value: 2 }];
 
-    this.searchBar.refresh();
+    this.searchBar.open();
   }
 
-  @ViewChild('searchBar') searchBar: AXSearchBarComponent;
+  @ViewChild('searchBar', { static: true }) searchBar: AXSearchBarComponent;
 
   _context: any;
   prop = {
@@ -49,17 +49,14 @@ export class SearchBarPage implements AfterViewInit {
     }
   }
 
-  counter = 0;
-  onSearchValue(e) {
-    debugger;
-    console.log('emit is', this.counter++);
-  }
+  onSearchValue(e) {}
 
   handleValueChange(e: AXProperyEditorValueChangeEvent) {}
 
   items: AXPropertyConfig[] = [
     {
       property: {
+        visible: false,
         editorClass: 'ax/editors/date',
         name: 'startDate',
         title: 'تاریخ',
@@ -71,7 +68,6 @@ export class SearchBarPage implements AfterViewInit {
         },
         row: 1,
         col: 3,
-        visible: true
       },
       value: new AXDateTime().toISOString()
     },

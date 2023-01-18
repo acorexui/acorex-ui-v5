@@ -207,7 +207,9 @@ export class AXSearchBarComponent {
     this._filterItems = JSON.parse(JSON.stringify(this._filterItemsClone.filter((el) => el.value != null && el.value != '')));
     if (this._filterItems.length === this._defultValueCount.length && this.loadOnInit && !this._isEmitted) {
       this._isEmitted = true;
-      this.onSearchValue.emit(this._filterItems);
+      setTimeout(() => {
+        this.onSearchValue.emit(this._filterItems);
+      });
     }
   }
 
@@ -255,5 +257,17 @@ export class AXSearchBarComponent {
         }
       });
     }
+  }
+
+  public open() {
+    setTimeout(() => {
+      this.searchPopover.open();
+      this.cdr.detectChanges();
+      this.cdr.markForCheck();
+    }, 100);
+  }
+
+  public close() {
+    this.searchPopover.close();
   }
 }
