@@ -1,7 +1,9 @@
 .ax-calendar-container {
     border: 1px solid var(--ax-border-color);
     border-radius: var(--ax-size-border-radius);
+
     .ax-calendar-header {
+        direction: ltr;
         display: flex;
         justify-content: space-between;
         padding-top: 0.5rem;
@@ -9,23 +11,28 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         border-bottom: 1px solid var(--ax-border-color);
+
         .ax-nav-button,
         .ax-controll-button {
             padding: 0 0.5rem;
         }
     }
+
     .ax-calendar-body {
         padding: 0.5rem;
+
         .ax-month-items,
         .ax-day-items {
             display: grid;
             grid-template-columns: repeat(7, minmax(0, 1fr));
         }
+
         .ax-month-container,
         .ax-year-container {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            > div {
+
+            >div {
                 font-size: 0.875rem;
                 line-height: 1.25rem;
                 position: relative;
@@ -36,11 +43,13 @@
                 margin: 0.125rem;
                 border-radius: 0.25rem;
                 background-color: var(--ax-light-light-color);
+
                 &::before {
                     content: "";
                     padding-top: 50%;
                     float: left;
                 }
+
                 &::after {
                     content: "";
                     display: block;
@@ -48,8 +57,10 @@
                 }
             }
         }
+
         .ax-month-items {
             margin: 0.5rem 0;
+
             .ax-month-item {
                 font-size: 1rem;
                 line-height: 1.25rem;
@@ -62,6 +73,7 @@
                 margin: 0.125rem;
             }
         }
+
         .ax-day-items {
             .ax-day-item {
                 font-size: 0.875rem;
@@ -73,39 +85,49 @@
                 cursor: pointer;
                 margin: 0.125rem;
                 border-radius: 0.25rem;
+
                 &::before {
                     content: "";
                     padding-top: 100%;
                     float: left;
                 }
+
                 &::after {
                     content: "";
                     display: block;
                     clear: both;
                 }
+
                 &:hover {
                     background-color: var(--ax-light-light-color);
                 }
+
                 &.holiday {
                     color: var(--ax-danger-color);
+
                     &:hover {
                         color: #000;
                     }
                 }
+
                 &.today {
                     background-color: var(--ax-primary-trans-dark-color) !important;
                     color: var(--ax-primary-color) !important;
                 }
+
                 &.selected {
                     background-color: var(--ax-success-color);
                     color: var(--ax-success-fore-color);
+
                     &:hover {
                         color: var(--ax-success-fore-color);
                     }
                 }
+
                 &.next-month {
                     opacity: 0.5;
                 }
+
                 &.unselect {
                     cursor: not-allowed;
                     position: relative;
@@ -115,6 +137,7 @@
             }
         }
     }
+
     .ax-calendar-footer {
         padding: 0.5rem;
     }
