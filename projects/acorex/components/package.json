@@ -1,6 +1,6 @@
 {
   "name": "@acorex/components",
-  "version": "5.1.11",
+  "version": "6.5.0",
   "peerDependencies": {
     "@angular/common": "^13.3.8",
     "@angular/core": "^13.3.8"
